@@ -1,9 +1,14 @@
 "use client";
 
 import { Flex } from "@mantine/core";
-import { Login } from "@open-press/components";
+import { useInject } from "@open-press/hooks";
+import { Suspense } from "react";
+// import { Login } from "@open-press/components";
 
 export default function Page(): JSX.Element {
+	const Login = useInject("Login");
+	console.log("Login", Login);
+
 	return (
 		<Flex
 			align={"center"}
@@ -11,7 +16,9 @@ export default function Page(): JSX.Element {
 			w={"100%"}
 			h={"100%"}
 		>
-			<Login.Card />
+			<Suspense fallback={<div>Loading...</div>}>
+				<Login.Card />
+			</Suspense>
 		</Flex>
 	);
 }

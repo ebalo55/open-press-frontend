@@ -43,10 +43,10 @@
 				"libs/frontend-interfaces/src/index.ts"
 			],
 			"@open-press/frontend-utility": [
-				"libs/utility/src/index.ts"
+				"libs/frontend-utility/src/index.ts"
 			],
 			"@open-press/frontend-utility/server": [
-				"libs/utility/src/server.ts"
+				"libs/frontend-utility/src/server.ts"
 			]
 		}
 	},
