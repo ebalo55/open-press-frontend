@@ -1,11 +1,8 @@
 import { SafeParseReturnType, z, ZodType } from "zod";
 
-export const safeValidate = <
-	R,
-	T extends z.ZodTypeAny = z.ZodTypeAny,
->(
+export const safeValidate = <R, T extends z.ZodTypeAny = z.ZodTypeAny>(
 	value: any,
-	schema: T,
+	schema: T
 ): SafeParseReturnType<any, R> => {
 	return (schema as ZodType<R, any, any>).safeParse(value);
 };

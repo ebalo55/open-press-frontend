@@ -1,5 +1,5 @@
-import { z } from "zod";
 import mongoose from "mongoose";
+import { z } from "zod";
 
 export const MongoIdSchema = z.custom<string>(
 	(value) => {
@@ -12,5 +12,5 @@ export const MongoIdSchema = z.custom<string>(
 	{
 		message: "Invalid identifier.",
 	},
-	true,
+	true
 );

@@ -2,8 +2,8 @@
 
 /* istanbul ignore file */
 
+import { getCurrentEventSelector, getElementOffset, updateValueAtIndex } from "@open-press/frontend-utility";
 import { DragEvent, useCallback, useEffect, useState } from "react";
-import { getCurrentEventSelector, getElementOffset, updateValueAtIndex } from "@open-press/utility";
 
 export const useDraggableElement = (
 	header_query_selector: string,

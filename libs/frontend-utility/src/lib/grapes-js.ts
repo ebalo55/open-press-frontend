@@ -2,12 +2,12 @@
 
 /* istanbul ignore file */
 
-import { Component, TraitProperties } from "grapesjs";
 import {
 	ComponentAttributeChangeHandler,
 	ComponentAttributeChangeHandlerOptions,
 	GenericObject,
 } from "@open-press/interfaces";
+import { Component, TraitProperties } from "grapesjs";
 import { capitalize } from "lodash";
 
 /**

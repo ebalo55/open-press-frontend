@@ -42,10 +42,10 @@
 			"@open-press/interfaces": [
 				"libs/frontend-interfaces/src/index.ts"
 			],
-			"@open-press/utility": [
+			"@open-press/frontend-utility": [
 				"libs/utility/src/index.ts"
 			],
-			"@open-press/utility/server": [
+			"@open-press/frontend-utility/server": [
 				"libs/utility/src/server.ts"
 			]
 		}

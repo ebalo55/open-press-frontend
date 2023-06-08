@@ -1,4 +1,4 @@
-import { ComponentDefinition } from "grapesjs";
+import { Component } from "grapesjs";
 
 export interface ComponentAttributeChangeHandlerOptions {
 	init?: boolean;
@@ -7,7 +7,7 @@ export interface ComponentAttributeChangeHandlerOptions {
 }
 
 export type ComponentAttributeChangeHandler = (
-	component: ComponentDefinition,
+	component: Component,
 	value: string,
-	options: ComponentAttributeChangeHandlerOptions,
+	options: ComponentAttributeChangeHandlerOptions
 ) => void;

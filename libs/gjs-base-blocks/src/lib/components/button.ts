@@ -1,11 +1,8 @@
-import { Editor } from "grapesjs";
+import { explodeClasses } from "@open-press/frontend-utility";
 import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
-import { explodeClasses } from "@open-press/utility";
+import { Editor } from "grapesjs";
 
-type ButtonTypes =
-	"button"
-	| "reset"
-	| "submit";
+type ButtonTypes = "button" | "reset" | "submit";
 const button_types: ButtonTypes[] = [
 	"button",
 	"reset",
