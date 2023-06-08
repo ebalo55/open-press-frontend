@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@open-press/components": ["libs/components/src/index.ts"],
+      "@open-press/components/server": ["libs/components/src/server.ts"],
+      "@open-press/gjs-base-blocks": ["libs/gjs-base-blocks/src/index.ts"],
+      "@open-press/gjs-ui": ["libs/gjs-ui/src/index.ts"],
+      "@open-press/hooks": ["libs/hooks/src/index.ts"],
+      "@open-press/interfaces": ["libs/frontend-interfaces/src/index.ts"],
+      "@open-press/utility": ["libs/utility/src/index.ts"],
+      "@open-press/utility/server": ["libs/utility/src/server.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
