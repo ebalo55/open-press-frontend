@@ -1,22 +1,31 @@
-import { ReactChildren } from "@open-press/interfaces";
+import { Login } from "@open-press/components";
 import { ReactNode } from "react";
 
-export default function Layout(
-  {
-    children,
-    dashboard,
-    login,
-  }: ReactChildren & { dashboard: ReactNode, login: ReactNode },
-): JSX.Element {
-  const user = {
-    email: "john.doe@example.com",
-  };
+export default function Layout({ dashboard, login }: { dashboard: ReactNode; login: ReactNode }): JSX.Element {
+	/* const user = {
+	 email: "john.doe@example.com",
+	 };*/
 
-  // const user = null;
+	const user = null;
 
-  return (
-    <main className={"min-h-screen min-w-screen grid grid-cols-2 m-0 p-0 gap-0"}>
-      {user ? dashboard : login}
-    </main>
-  );
+	return (
+		<>
+			<main
+				style={{
+					width: "100dvw",
+					height: "95dvh",
+				}}
+			>
+				{user ? dashboard : login}
+			</main>
+			<footer
+				style={{
+					width: "100dvw",
+					height: "5dvh",
+				}}
+			>
+				<Login.Footer />
+			</footer>
+		</>
+	);
 }

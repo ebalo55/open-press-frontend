@@ -8,13 +8,12 @@ export const metadata: Metadata = {
 export default function Page(): JSX.Element {
 	return (
 		<>
-			<h1>
-				TODO: dynamically render homepage, in the meantime you can:
-			</h1>
+			<h1>TODO: dynamically render homepage, in the meantime you can:</h1>
 			<ul>
-				<li><Link href={"/admin"}>Admin</Link></li>
+				<li>
+					<Link href={"/admin"}>Navigate to admin</Link>
+				</li>
 			</ul>
 		</>
-
 	);
 }
