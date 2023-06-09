@@ -2,3 +2,4 @@
 // utilities
 
 export * from "./lib/client/login";
+export * from "./lib/client/loader";

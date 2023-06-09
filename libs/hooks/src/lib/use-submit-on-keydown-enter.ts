@@ -8,6 +8,8 @@ import { EventHandler, KeyboardEvent, RefObject } from "react";
 export const useSubmitOnKeydownEnter = (form: RefObject<HTMLFormElement>) => {
 	const handleKeyDown: EventHandler<KeyboardEvent<HTMLInputElement>> = (event: KeyboardEvent) => {
 		if (event.key === "Enter") {
+			console.log("submitting form", form, form.current);
+			event.preventDefault();
 			form.current?.submit();
 		}
 	};

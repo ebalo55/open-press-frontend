@@ -1,6 +1,5 @@
 "use client";
 
-import { CONFIG } from "@frontend/config";
 import { Flex, Stack, Text } from "@mantine/core";
 import { DateTime } from "luxon";
 import Link from "next/link";
@@ -20,17 +19,13 @@ export const Footer: FC = () => {
 				justify={"center"}
 			>
 				<Text size={"sm"}>
-					{CONFIG.app_name} © {DateTime.now().year}
-				</Text>
-				<Text size={"sm"}>
-					Made with{" "}
-					<span
-						role={"img"}
-						aria-label={"love"}
+					<Link
+						href={"https://open-press.override.sh"}
+						target={"_blank"}
 					>
-						❤️
-					</span>{" "}
-					by <Link href={"https://open-press.override.sh"}>OpenPress</Link>
+						OpenPress
+					</Link>{" "}
+					© {DateTime.now().year}
 				</Text>
 			</Stack>
 		</Flex>

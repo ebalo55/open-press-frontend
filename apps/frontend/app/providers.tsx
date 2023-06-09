@@ -4,7 +4,7 @@ import { ColorScheme, ColorSchemeProvider, Global, MantineProvider, Paper } from
 import { nunito } from "@open-press/components/server";
 import { IocProvider } from "@open-press/hooks";
 import { ReactChildren } from "@open-press/interfaces";
-import { asValue, createContainer } from "awilix";
+import { asValue, AwilixContainer, createContainer } from "awilix";
 import { Suspense, useEffect, useState } from "react";
 
 async function fillContainer() {
@@ -33,18 +33,6 @@ async function fillContainer() {
 		}, {})
 	);
 
-	/* container.register({
-	 Login: asValue<typeof components_module.Login>(components_module.Login),
-	 ...Object.entries(hooks_module).reduce((acc: any, [key, value]) => {
-	 acc[key] = asValue(value);
-	 return acc;
-	 }, {}),
-	 ...Object.entries(front_end_utility_module).reduce((acc: any, [key, value]) => {
-	 acc[key] = asValue(value);
-	 return acc;
-	 }, {}),
-	 }); */
-
 	return container;
 }
 
@@ -53,7 +41,7 @@ export function Providers({ children }: ReactChildren) {
 	const toggleColorScheme = (value?: ColorScheme) =>
 		setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
-	const [container, setContainer] = useState<any>(null);
+	const [container, setContainer] = useState<AwilixContainer | null>(null);
 
 	useEffect(() => {
 		fillContainer().then((container) => {

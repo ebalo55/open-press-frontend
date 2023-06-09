@@ -12,7 +12,7 @@ export const Card: FC = () => {
 			shadow={"xl"}
 			p={"xl"}
 			sx={{
-				transform: "translateY(-50%)",
+				transform: "translateY(-40%)",
 			}}
 			w={"24rem"}
 		>
