@@ -1,11 +1,12 @@
 "use client";
 
-import { Flex } from "@mantine/core";
-import { useInject } from "@open-press/hooks";
-import { FC, Suspense } from "react";
+import {Flex} from "@mantine/core";
+import {useInject} from "@open-press/hooks";
+import {FC, Suspense} from "react";
+import {INJECTION_TOKENS} from "@open-press/interfaces";
 
 export default function Page(): JSX.Element {
-	const Login = useInject<{ Card: FC }>("Login");
+    const Login = useInject<{ Card: FC }>(INJECTION_TOKENS.components.login);
 
 	return (
 		<Flex
