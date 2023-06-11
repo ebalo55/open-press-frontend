@@ -1,63 +1,115 @@
 "use client";
 
-import { Button, Checkbox, PasswordInput, Stack, TextInput } from "@mantine/core";
-import { useForm, zodResolver } from "@mantine/form";
-import { FC, FormEvent } from "react";
-import { z } from "zod";
+import {Button, Checkbox, LoadingOverlay, PasswordInput, Stack, TextInput} from "@mantine/core";
+import {useForm, zodResolver} from "@mantine/form";
+import {FC} from "react";
+import {z} from "zod";
+import {CONFIG} from "@frontend/config";
+import {useIoc} from "@open-press/hooks";
+import {INJECTION_TOKENS} from "@open-press/interfaces";
+import {asValue} from "awilix";
+import {useRouter} from "next/navigation";
+import {useDisclosure, useLocalStorage, useSessionStorage} from "@mantine/hooks";
 
 const login_schema = z.object({
-	email: z.string().email().nonempty(),
-	password: z.string().nonempty(),
-	remember_me: z.boolean(),
+    email: z.string().email().nonempty(),
+    password: z.string().nonempty(),
+    remember_me: z.boolean(),
 });
 
 export const Form: FC = () => {
-	const form = useForm({
-		validate: zodResolver(login_schema),
-		initialValues: {
-			email: "",
-			password: "",
-			remember_me: false,
-		},
-		validateInputOnBlur: true,
-		clearInputErrorOnChange: true,
-	});
+    const container = useIoc()
+    const router = useRouter()
 
-	const submit_handle = (event: FormEvent<HTMLFormElement>) => {
-		console.log("submit");
-		event.preventDefault();
+    const [, set_ss_authentication_token] = useSessionStorage({
+        key: INJECTION_TOKENS.instances.authentication_token,
+        defaultValue: null
+    })
+    const [, set_ls_authentication_token] = useLocalStorage({
+        key: INJECTION_TOKENS.instances.authentication_token,
+        defaultValue: null
+    })
 
-		form.onSubmit((values, event) => {
-			console.log(values);
-		})(event);
-	};
+    const form = useForm({
+        validate: zodResolver(login_schema),
+        initialValues: {
+            email: "",
+            password: "",
+            remember_me: false,
+        },
+        validateInputOnBlur: true,
+        clearInputErrorOnChange: true,
+    });
 
-	return (
-		<form onSubmit={submit_handle}>
-			<Stack>
-				<TextInput
-					placeholder={"john.doe@example.com"}
-					label={"Email"}
-					withAsterisk
-					{...form.getInputProps("email")}
-				/>
-				<PasswordInput
-					placeholder="••••••••"
-					label="Password"
-					withAsterisk
-					{...form.getInputProps("password")}
-				/>
-				<Checkbox
-					label={"Remember me!"}
-					{...form.getInputProps("remember_me", { type: "checkbox" })}
-				/>
-				<Button
-					variant={"light"}
-					type={"submit"}
-				>
-					Login
-				</Button>
-			</Stack>
-		</form>
-	);
+    const [is_visible, {open: openLoadingOverlay, close: closeLoadingOverlay}] = useDisclosure(false)
+
+    const submit_handle = form.onSubmit(async (values, event) => {
+        event.preventDefault()
+        openLoadingOverlay()
+
+        try {
+            const response = await fetch(`${CONFIG.backend_url}/auth/login`, {
+                method: "post",
+                body: JSON.stringify(values),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+
+            const body = await response.json();
+
+            if (response.ok) {
+                container.register(INJECTION_TOKENS.instances.authentication_token, asValue(body.access_token))
+
+                if (values.remember_me) {
+                    set_ls_authentication_token(body.access_token)
+                } else {
+                    set_ss_authentication_token(body.access_token)
+                }
+                router.push("/admin/dashboard")
+
+                return;
+            }
+
+            form.setErrors({
+                email: body.error,
+                password: body.error
+            })
+
+            closeLoadingOverlay()
+        } catch (e) {
+            console.log(e)
+            closeLoadingOverlay()
+        }
+    });
+
+    return (
+        <form onSubmit={submit_handle} style={{position: "relative"}}>
+            <LoadingOverlay visible={is_visible} overlayBlur={1}/>
+            <Stack>
+                <TextInput
+                    placeholder={"john.doe@example.com"}
+                    label={"Email"}
+                    withAsterisk
+                    {...form.getInputProps("email")}
+                />
+                <PasswordInput
+                    placeholder="••••••••"
+                    label="Password"
+                    withAsterisk
+                    {...form.getInputProps("password")}
+                />
+                <Checkbox
+                    label={"Remember me!"}
+                    {...form.getInputProps("remember_me", {type: "checkbox"})}
+                />
+                <Button
+                    variant={"light"}
+                    type={"submit"}
+                >
+                    Login
+                </Button>
+            </Stack>
+        </form>
+    );
 };

@@ -8,3 +8,4 @@ export * from "./lib/use-submit-on-keydown-enter";
 export * from "./lib/ioc";
 export * from "./lib/use-ioc";
 export * from "./lib/use-inject";
+export * from "./lib/swr";

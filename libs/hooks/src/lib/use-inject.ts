@@ -1,4 +1,4 @@
-import { useIoc } from "./use-ioc";
+import {useIoc} from "./use-ioc";
 
 /**
  * Injects a dependency from the IoC container
@@ -20,7 +20,9 @@ export const useInject = <T = any>(identifier: string): T => {
  * @returns {T | undefined} The dependency or undefined if it does not exist
  */
 export const useSafeInject = <T = any>(identifier: string): T | undefined => {
-	const container = useIoc();
+    const container = useIoc();
 
-	return container.hasRegistration(identifier) ? (container.resolve(identifier) as T) : undefined;
+
+    console.log(container)
+    return container.hasRegistration(identifier) ? (container.resolve(identifier) as T) : undefined;
 };
