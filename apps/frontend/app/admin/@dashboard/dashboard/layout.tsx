@@ -1,8 +1,8 @@
 "use client";
 
 
-import {INJECTION_TOKENS, ReactChildren} from "@open-press/interfaces";
-import {AppShell} from "@mantine/core";
+import { INJECTION_TOKENS, ReactChildren } from "@open-press/frontend-interfaces";
+import { AppShell } from "@mantine/core";
 import {useSafeInject} from "@open-press/hooks";
 
 export default function Layout(

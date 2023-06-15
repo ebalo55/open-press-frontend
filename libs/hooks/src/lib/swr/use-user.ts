@@ -1,7 +1,7 @@
 "use client"
 
-import {INJECTION_TOKENS, UserEntity} from "@open-press/interfaces";
-import {CONFIG} from "@frontend/config";
+import { INJECTION_TOKENS, UserEntity } from "@open-press/frontend-interfaces";
+import { CONFIG } from "@frontend/config";
 import {useSafeInject} from "@open-press/hooks";
 import useSWR from "swr";
 import axios from "axios";

@@ -1,5 +1,6 @@
-import { explodeClasses, GrapesJsUtility } from "@open-press/frontend-utility";
+import { GrapesJsUtility } from "@open-press/frontend-utility";
 import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
+import classNames from "classnames";
 import { Editor } from "grapesjs";
 
 export const ColumnsComponent = (editor: Editor) => {
@@ -11,7 +12,7 @@ export const ColumnsComponent = (editor: Editor) => {
 			// Default properties
 			defaults: {
 				tagName: "div",
-				classes: explodeClasses("columns-component text-base p-4 relative flex flex-nowrap basis-full"),
+				classes: classNames("columns-component text-base p-4 relative flex flex-nowrap basis-full"),
 				droppable: true,
 				attributes: {
 					columns: 1,

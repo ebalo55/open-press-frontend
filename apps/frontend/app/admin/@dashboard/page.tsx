@@ -1,6 +1,6 @@
 "use client";
 import { useInject } from "@open-press/hooks";
-import { INJECTION_TOKENS } from "@open-press/interfaces";
+import { INJECTION_TOKENS } from "@open-press/frontend-interfaces";
 import { useRouter } from "next/navigation";
 import { FC, Suspense, useEffect } from "react";
 

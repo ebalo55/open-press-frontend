@@ -1,16 +1,11 @@
-import { BadRequestException } from "@nestjs/common";
-import { Constructor } from "@open-press/interfaces";
+import { Constructor } from "@open-press/frontend-interfaces";
 import { z } from "zod";
 import { validate } from "./validate";
 
-export const validateMany = <
-	R,
-	T extends z.ZodTypeAny = z.ZodTypeAny,
-	E extends Constructor<Error> = Constructor<BadRequestException>
->(
+export const validateMany = <R, T extends z.ZodTypeAny = z.ZodTypeAny, E extends Constructor<Error> = Constructor<Error>>(
 	value: any[],
 	schema: T[],
-	error: E = BadRequestException as any
+	error: E = Error as any
 ): R => {
 	if (value.length !== schema.length) {
 		throw new error({

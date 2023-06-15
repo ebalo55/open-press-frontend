@@ -6,7 +6,7 @@ import {
 	ComponentAttributeChangeHandler,
 	ComponentAttributeChangeHandlerOptions,
 	GenericObject,
-} from "@open-press/interfaces";
+} from "@open-press/frontend-interfaces";
 import { Component, TraitProperties } from "grapesjs";
 import { capitalize } from "lodash";
 

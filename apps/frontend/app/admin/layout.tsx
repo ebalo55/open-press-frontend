@@ -1,8 +1,8 @@
 "use client";
 
-import {useInject, useUser} from "@open-press/hooks";
-import {INJECTION_TOKENS} from "@open-press/interfaces";
-import {ReactNode, Suspense} from "react";
+import { useInject, useUser } from "@open-press/hooks";
+import { INJECTION_TOKENS } from "@open-press/frontend-interfaces";
+import { ReactNode, Suspense } from "react";
 
 export default function Layout({dashboard, login}: { dashboard: ReactNode; login: ReactNode }): JSX.Element {
     // Inject the user instance from the container this may be undefined if the user is not logged in

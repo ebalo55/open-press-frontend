@@ -1,11 +1,13 @@
 "use client";
 
 import { Card as MantineCard } from "@mantine/core";
+import { INJECTION_TOKENS } from "@open-press/frontend-interfaces";
+import { useInject } from "@open-press/hooks";
 import { FC } from "react";
-import { CardHeader } from "./card-header";
-import { Form } from "./form";
 
 export const Card: FC = () => {
+	const { CardHeader, Form } = useInject<{ CardHeader: FC; Form: FC }>(INJECTION_TOKENS.components.login);
+
 	return (
 		<MantineCard
 			withBorder

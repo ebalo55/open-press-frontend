@@ -1,6 +1,6 @@
 import { GrapesJsUtility } from "@open-press/frontend-utility";
 import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
-import { ComponentAttributeChangeHandlerOptions } from "@open-press/interfaces";
+import { ComponentAttributeChangeHandlerOptions } from "@open-press/frontend-interfaces";
 import { Component, Editor } from "grapesjs";
 import { OPEN_STYLESHEET_EDITOR_MODAL, OpenStylesheetEditorModalOptions } from "../commands";
 

@@ -1,5 +1,6 @@
-import { explodeClasses, GrapesJsUtility } from "@open-press/frontend-utility";
+import { GrapesJsUtility } from "@open-press/frontend-utility";
 import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
+import classNames from "classnames";
 import { Editor } from "grapesjs";
 
 export const GridComponent = (editor: Editor) => {
@@ -11,7 +12,7 @@ export const GridComponent = (editor: Editor) => {
 			// Default properties
 			defaults: {
 				tagName: "div",
-				classes: explodeClasses("grid-component text-base p-4 relative grid grid-cols-1 grid-rows-1"),
+				classes: classNames("grid-component text-base p-4 relative grid grid-cols-1 grid-rows-1"),
 				droppable: true,
 				attributes: {
 					columns: 1,

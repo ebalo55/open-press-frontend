@@ -1,4 +1,4 @@
-import { ReactChildren } from "@open-press/interfaces";
+import { ReactChildren } from "@open-press/frontend-interfaces";
 import { AwilixContainer } from "awilix";
 import { createContext, FC } from "react";
 

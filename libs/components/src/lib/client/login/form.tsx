@@ -5,9 +5,9 @@ import {useForm, zodResolver} from "@mantine/form";
 import {FC} from "react";
 import {z} from "zod";
 import {CONFIG} from "@frontend/config";
-import {useIoc} from "@open-press/hooks";
-import {INJECTION_TOKENS} from "@open-press/interfaces";
-import {asValue} from "awilix";
+import { useIoc } from "@open-press/hooks";
+import { INJECTION_TOKENS } from "@open-press/frontend-interfaces";
+import { asValue } from "awilix";
 import {useRouter} from "next/navigation";
 import {useDisclosure, useLocalStorage, useSessionStorage} from "@mantine/hooks";
 
@@ -78,7 +78,6 @@ export const Form: FC = () => {
 
             closeLoadingOverlay()
         } catch (e) {
-            console.log(e)
             closeLoadingOverlay()
         }
     });

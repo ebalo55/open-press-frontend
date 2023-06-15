@@ -1,4 +1,4 @@
-import { TraitHorizontalSeparatorExtraSettings } from "@open-press/interfaces";
+import { TraitHorizontalSeparatorExtraSettings } from "@open-press/frontend-interfaces";
 import classNames from "classnames";
 import { ITraitView } from "grapesjs";
 

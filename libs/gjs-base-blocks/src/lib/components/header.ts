@@ -1,5 +1,6 @@
-import { explodeClasses, GrapesJsUtility } from "@open-press/frontend-utility";
-import { ComponentAttributeChangeHandlerOptions } from "@open-press/interfaces";
+import { GrapesJsUtility } from "@open-press/frontend-utility";
+import { ComponentAttributeChangeHandlerOptions } from "@open-press/frontend-interfaces";
+import classNames from "classnames";
 import { Component, Editor } from "grapesjs";
 
 export const HeaderComponent = (editor: Editor) => {
@@ -29,7 +30,7 @@ export const HeaderComponent = (editor: Editor) => {
 					},
 					"id",
 				],
-				classes: explodeClasses("font-semibold text-2xl p-2"),
+				classes: classNames("font-semibold text-2xl p-2"),
 				components: [
 					{
 						type: "textnode",

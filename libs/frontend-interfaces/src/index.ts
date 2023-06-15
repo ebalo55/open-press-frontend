@@ -6,3 +6,4 @@ export * from "./lib/generic-object";
 export * from "./lib/injection-constants";
 export * from "./lib/entities";
 export * from "./lib/components";
+export * from "./lib/extensibility";

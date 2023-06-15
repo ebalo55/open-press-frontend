@@ -1,4 +1,4 @@
-import { explodeClasses } from "@open-press/frontend-utility";
+import classNames from "classnames";
 import { Editor } from "grapesjs";
 
 export const FormComponent = (editor: Editor) => {
@@ -73,7 +73,7 @@ export const FormComponent = (editor: Editor) => {
 						label: "Disable validation",
 					},
 				],
-				classes: explodeClasses("p-2"),
+				classes: classNames("p-2"),
 			},
 		},
 	});

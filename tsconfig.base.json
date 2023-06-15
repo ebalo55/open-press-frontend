@@ -39,7 +39,7 @@
 			"@open-press/hooks": [
 				"libs/hooks/src/index.ts"
 			],
-			"@open-press/interfaces": [
+			"@open-press/frontend-interfaces": [
 				"libs/frontend-interfaces/src/index.ts"
 			],
 			"@open-press/frontend-utility": [

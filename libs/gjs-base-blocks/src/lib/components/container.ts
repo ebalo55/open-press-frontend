@@ -1,4 +1,4 @@
-import { explodeClasses } from "@open-press/frontend-utility";
+import classNames from "classnames";
 import { Editor } from "grapesjs";
 
 export const ContainerComponent = (editor: Editor) => {
@@ -11,7 +11,7 @@ export const ContainerComponent = (editor: Editor) => {
 			// Default properties
 			defaults: {
 				tagName: "div",
-				classes: explodeClasses("container-component text-base p-4 relative w-full"),
+				classes: classNames("container-component text-base p-4 relative w-full"),
 				droppable: true,
 			},
 		},
