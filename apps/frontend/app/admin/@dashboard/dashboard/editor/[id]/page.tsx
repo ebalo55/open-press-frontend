@@ -1,5 +1,3 @@
-"use client";
-
 import { BlockEditor } from "@open-press/components";
 
 interface Params {
@@ -11,6 +9,8 @@ interface Props {
 }
 
 export default function Page({ params }: Props) {
+	const { id } = params;
+
 	return (
 		<div
 			style={{
@@ -19,7 +19,7 @@ export default function Page({ params }: Props) {
 				overflow: "hidden",
 			}}
 		>
-			<BlockEditor />
+			<BlockEditor id={id} />
 		</div>
 	);
 }

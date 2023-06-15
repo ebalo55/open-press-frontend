@@ -11,7 +11,7 @@ export const TraitHorizontalSeparator: ITraitView = {
 		const { additional_classes } = trait.get("default") as TraitHorizontalSeparatorExtraSettings;
 
 		const element = document.createElement("hr");
-		element.classList.add(...classNames("border border-gray-400"));
+		element.style.border = "1px solid #9ca3af";
 
 		if (additional_classes) {
 			element.classList.add(...classNames(additional_classes));

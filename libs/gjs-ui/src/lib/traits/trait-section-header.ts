@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { ITraitView } from "grapesjs";
 
 export const TraitSectionHeader: ITraitView = {
@@ -12,7 +11,10 @@ export const TraitSectionHeader: ITraitView = {
 		const label = trait.get("label") || trait.get("name") || "Section Header";
 
 		const element = document.createElement("div");
-		element.classList.add(...classNames("flex items-center font-semibold mt-2"));
+		element.style.display = "flex";
+		element.style.alignItems = "center";
+		element.style.fontWeight = "600";
+		element.style.marginTop = ".5rem";
 		element.innerText = label;
 
 		return element;

@@ -133,3 +133,9 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 1fr));
 }
+
+@keyframes spin {
+    100% {
+        transform: rotate(1turn);
+    }
+}

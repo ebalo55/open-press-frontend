@@ -5,6 +5,7 @@ import {
 	ImportCodeButton,
 	PreviewButton,
 	RedoButton,
+	SavingButton,
 	UndoButton,
 	ViewComponentsButton,
 } from "../buttons";
@@ -17,6 +18,7 @@ export const BasicActions: Panel = {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	buttons: [
+		SavingButton,
 		ViewComponentsButton,
 		FullscreenButton,
 		PreviewButton,

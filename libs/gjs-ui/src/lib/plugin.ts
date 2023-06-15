@@ -1,6 +1,4 @@
 import { Editor } from "grapesjs";
-import { BasicActions, DevicesPanel, PanelSwitcherPanel, ResizableLayersPanel, TopPanel } from "./panels";
-import { DeviceDesktop, DeviceMobile } from "./devices";
 import {
 	IMPORT_CODE,
 	openImportCodeModal,
@@ -17,6 +15,9 @@ import {
 	ShowStylesCommand,
 	ShowTraitsCommand,
 } from "./commands";
+import { DeviceDesktop, DeviceMobile } from "./devices";
+import { BasicActions, DevicesPanel, PanelSwitcherPanel, ResizableLayersPanel, TopPanel } from "./panels";
+import { CustomRemoteStorage } from "./storage";
 import {
 	TRAIT_HORIZONTAL_SEPARATOR,
 	TRAIT_SECTION_HEADER,
@@ -25,97 +26,74 @@ import {
 } from "./traits";
 
 export const UiPlugin = (editor: Editor) => {
-	editor.Panels.getPanels()
-	      .reset([
-		      TopPanel,
-		      BasicActions,
-		      ResizableLayersPanel,
-		      PanelSwitcherPanel,
-		      DevicesPanel,
-	      ]);
+	editor.Panels.getPanels().reset([TopPanel, BasicActions, ResizableLayersPanel, PanelSwitcherPanel, DevicesPanel]);
 
-	editor.Devices.devices.reset([
-		DeviceDesktop,
-		DeviceMobile,
-	]);
+	editor.Devices.devices.reset([DeviceDesktop, DeviceMobile]);
 
 	const ui_commands = [
 		{
-			id:      SHOW_LAYERS,
+			id: SHOW_LAYERS,
 			command: ShowLayersCommand,
 		},
 		{
-			id:      SHOW_TRAITS,
+			id: SHOW_TRAITS,
 			command: ShowTraitsCommand,
 		},
 		{
-			id:      SHOW_STYLES,
+			id: SHOW_STYLES,
 			command: ShowStylesCommand,
 		},
 		{
-			id:      SHOW_BLOCKS,
+			id: SHOW_BLOCKS,
 			command: ShowBlocksCommand,
 		},
 		{
-			id:      SET_DEVICE_DESKTOP,
+			id: SET_DEVICE_DESKTOP,
 			command: SetDeviceDesktopCommand,
 		},
 		{
-			id:      SET_DEVICE_MOBILE,
+			id: SET_DEVICE_MOBILE,
 			command: SetDeviceMobileCommand,
 		},
 		{
-			id:      IMPORT_CODE,
+			id: IMPORT_CODE,
 			command: openImportCodeModal,
 		},
 	];
-	ui_commands.forEach((
-			{
-				id,
-				command,
-			},
-		) => {
-			editor.Commands.add(id, command);
-		},
-	);
-
+	ui_commands.forEach(({ id, command }) => {
+		editor.Commands.add(id, command);
+	});
 
 	const ui_traits = [
 		{
-			id:    TRAIT_SECTION_HEADER,
+			id: TRAIT_SECTION_HEADER,
 			trait: TraitSectionHeader,
 		},
 		{
-			id:    TRAIT_HORIZONTAL_SEPARATOR,
+			id: TRAIT_HORIZONTAL_SEPARATOR,
 			trait: TraitHorizontalSeparator,
 		},
 	];
-	ui_traits.forEach((
-			{
-				id,
-				trait,
-			},
-		) => {
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			editor.Traits.addType(id, trait);
-		},
-	);
+	ui_traits.forEach(({ id, trait }) => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		editor.Traits.addType(id, trait);
+	});
 
+	editor.Storage.add("remote", CustomRemoteStorage);
 
 	editor.onReady(() => {
-		editor.Styles.getSector("general")
-		      .addProperty(
-			      {
-				      type:     "number",
-				      default:  "0",
-				      name:     "z-index",
-				      property: "z-index",
-				      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				      // @ts-ignore
-				      min: 0,
-			      },
-			      {},
-		      );
+		editor.Styles.getSector("general").addProperty(
+			{
+				type: "number",
+				default: "0",
+				name: "z-index",
+				property: "z-index",
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				min: 0,
+			},
+			{}
+		);
 	});
 };

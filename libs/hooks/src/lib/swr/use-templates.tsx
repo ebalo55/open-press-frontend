@@ -52,7 +52,7 @@ export const useTemplates = () => {
 				children: <DeleteConfirmationModal template_name={template_name} />,
 				onConfirm: async () => {
 					await deleteTemplateRequest(id, bearer);
-					listing_mutation();
+					await listing_mutation();
 				},
 				labels: {
 					cancel: "I'm not sure",
@@ -70,9 +70,20 @@ export const useTemplates = () => {
 		[DeleteConfirmationModal, bearer, listing_mutation]
 	);
 
+	const get = useCallback(
+		async (id: string) => {
+			const response = await axios.get<TemplateEntity>(`${CONFIG.backend_url}/template/${id}`, {
+				headers: { Authorization: `Bearer ${bearer}` },
+			});
+			return response.data;
+		},
+		[bearer]
+	);
+
 	return {
 		query: {
 			listing,
+			get,
 		},
 		deleteTemplate,
 	};
