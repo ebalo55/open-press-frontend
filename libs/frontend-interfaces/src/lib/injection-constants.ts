@@ -6,6 +6,10 @@ export const INJECTION_TOKENS = {
 
 		// bearer token used in authentication
 		authentication_token: "instances.authentication_token",
+
+		// keeps the value of the first loaded url, this is used to redirect the user to the originally requested page
+		// after login verification
+		initial_navigation_url: "instances.initial_navigation_url",
 	},
 	// React components
 	components: {

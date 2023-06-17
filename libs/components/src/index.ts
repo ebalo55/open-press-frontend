@@ -6,3 +6,4 @@ export * from "./lib/client/loader";
 export * from "./lib/client/editor";
 export * from "./lib/client/template";
 export * from "./lib/client/dashboard";
+export * from "./lib/client/admin";

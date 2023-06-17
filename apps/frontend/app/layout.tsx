@@ -4,6 +4,8 @@ import { ReactChildren } from "@open-press/frontend-interfaces";
 import "@tabler/icons-webfont/tabler-icons.min.css";
 import { Metadata } from "next";
 
+import "./globals.css";
+
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
