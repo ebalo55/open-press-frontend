@@ -1,7 +1,9 @@
 import { Editor } from "grapesjs";
 import {
+	BACK_HOME,
+	BackHomeCommand,
 	IMPORT_CODE,
-	openImportCodeModal,
+	OpenImportCodeModal,
 	SET_DEVICE_DESKTOP,
 	SET_DEVICE_MOBILE,
 	SetDeviceDesktopCommand,
@@ -57,10 +59,15 @@ export const UiPlugin = (editor: Editor) => {
 		},
 		{
 			id: IMPORT_CODE,
-			command: openImportCodeModal,
+			command: OpenImportCodeModal,
+		},
+		{
+			id: BACK_HOME,
+			command: BackHomeCommand,
 		},
 	];
 	ui_commands.forEach(({ id, command }) => {
+		console.log("Adding command", id, command);
 		editor.Commands.add(id, command);
 	});
 
