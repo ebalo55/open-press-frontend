@@ -12,6 +12,11 @@ const nextConfig = {
 		// See: https://github.com/gregberge/svgr
 		svgr: false,
 	},
+	poweredByHeader: false,
+	generateEtags: true,
+	compress: true,
+	optimizeFonts: true,
+	swcMinify: true,
 };
 
 const plugins = [
