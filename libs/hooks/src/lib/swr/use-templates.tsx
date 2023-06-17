@@ -1,3 +1,5 @@
+"use client";
+
 import { CONFIG } from "@frontend/config";
 import { modals } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
@@ -20,10 +22,10 @@ const deleteTemplateRequest = async (id: string, bearer: string) => {
 	});
 
 	notifications.show({
-		title: "Template Deleted",
+		title:   "Template Deleted",
 		message: `Template ${response.data.name} has been deleted`,
-		icon: <IconCheck size={18} />,
-		color: "green",
+		icon:    <IconCheck size={18} />,
+		color:   "green",
 	});
 
 	return response;
@@ -48,26 +50,26 @@ export const useTemplates = () => {
 	const deleteTemplate = useCallback(
 		async (id: string, template_name: string) => {
 			modals.openConfirmModal({
-				title: "Delete Template",
-				children: <DeleteConfirmationModal template_name={template_name} />,
-				onConfirm: async () => {
+				title:        "Delete Template",
+				children:     <DeleteConfirmationModal template_name={template_name} />,
+				onConfirm:    async () => {
 					await deleteTemplateRequest(id, bearer);
 					await listing_mutation();
 				},
-				labels: {
-					cancel: "I'm not sure",
+				labels:       {
+					cancel:  "I'm not sure",
 					confirm: "I'm sure, delete it",
 				},
 				confirmProps: {
 					variant: "light",
-					color: "red.7",
+					color:   "red.7",
 				},
-				cancelProps: {
+				cancelProps:  {
 					variant: "light",
 				},
 			});
 		},
-		[DeleteConfirmationModal, bearer, listing_mutation]
+		[ DeleteConfirmationModal, bearer, listing_mutation]
 	);
 
 	const get = useCallback(
@@ -77,7 +79,7 @@ export const useTemplates = () => {
 			});
 			return response.data;
 		},
-		[bearer]
+		[ bearer]
 	);
 
 	return {
