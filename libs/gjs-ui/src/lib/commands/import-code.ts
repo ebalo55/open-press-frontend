@@ -1,9 +1,9 @@
-import { CommandObject, Editor } from "grapesjs";
-import { EditorView } from "@codemirror/view";
-import { EditorState } from "@codemirror/state";
-import { darcula } from "@uiw/codemirror-theme-darcula";
 import { html } from "@codemirror/lang-html";
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { darcula } from "@uiw/codemirror-theme-darcula";
 import { basicSetup } from "codemirror";
+import { CommandObject, Editor } from "grapesjs";
 
 const SCRIPT_TEMPLATE = `<!-- 
 Write the code you want to import here.
@@ -70,10 +70,8 @@ const hookNextModalOpening = (editor: Editor) => {
 	});
 };
 
-export const openImportCodeModal: CommandObject = {
-	run: (
-		     editor,
-	     ) => {
+export const OpenImportCodeModal: CommandObject = {
+	run: (editor) => {
 		hookNextModalOpening(editor);
 		openModal(editor);
 	},
