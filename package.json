@@ -20,7 +20,7 @@
     "grapesjs-tui-image-editor": "^1.0.1",
     "grapesjs-typed": "^2.0.1",
     "luxon": "^3.3.0",
-    "next": "13.4.5",
+    "next": "13.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.3.0",
