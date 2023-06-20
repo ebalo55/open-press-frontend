@@ -1,4 +1,12 @@
-import { Editor } from "grapesjs";
+import {
+	Editor,
+	PropertyCompositeProps,
+	PropertyNumberProps,
+	PropertyProps,
+	PropertySelectProps,
+	PropValues,
+	StyleProps,
+} from "grapesjs";
 import {
 	BACK_HOME,
 	BackHomeCommand,
@@ -96,11 +104,122 @@ export const UiPlugin = (editor: Editor) => {
 				default: "0",
 				name: "z-index",
 				property: "z-index",
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
 				min: 0,
-			},
+			} as PropertyNumberProps,
 			{}
 		);
+		editor.Styles.getSector("general").addProperty(
+			{
+				type: "number",
+				default: "0",
+				name: "gap",
+				property: "gap",
+				label: "Gap",
+				units: ["px", "%", "em", "rem", "vh", "vw"],
+				min: 0,
+			} as PropertyNumberProps,
+			{}
+		);
+		editor.Styles.getSector("general").addProperty(
+			{
+				type: "composite",
+				name: "Grid template columns",
+				id: "grid-template-columns",
+				property: "grid-template-columns",
+				label: "Grid template columns",
+				/* requires: {
+				 display: "grid",
+				 }, */
+				properties: [
+					{
+						type: "select",
+						id: "type",
+						name: "Type",
+						options: [
+							{
+								id: "repeat",
+								label: "repeat",
+							},
+							{
+								id: "custom",
+								label: "custom",
+							},
+						],
+						default: "repeat",
+					} as PropertySelectProps,
+					{
+						type: "number",
+						id: "repetition",
+						name: "Repetition",
+						requires: {
+							type: "repeat",
+						},
+						default: "1",
+						min: 1,
+					} as PropertyNumberProps,
+					{
+						type: "number",
+						id: "value",
+						name: "Value",
+						default: "1fr",
+						units: ["fr", "px", "%", "em", "rem", "vh", "vw"],
+					} as PropertyNumberProps,
+					{
+						type: "base",
+						id: "custom-value",
+						name: "Value",
+						default: "1fr 50px 1fr",
+					} as PropertyProps,
+				],
+				separator: " ",
+				toStyle: (values, data): StyleProps => {
+					if (values.type === "custom") {
+						return {
+							[data.name]: values["custom-value"].replace(/repeat\((.+)\)/, "$1"),
+						};
+					} else {
+						return {
+							[data.name]: `repeat(${values["repetition"]}, ${values["value"]})`,
+						};
+					}
+				},
+				fromStyle: (style, data): PropValues => {
+					if (data.name in style) {
+						const style_value = style[data.name];
+
+						if (style_value.startsWith("repeat")) {
+							const [repetition, value] = style_value.replace("repeat(", "").replace(")", "").split(",");
+
+							return {
+								type: "repeat",
+								repetition,
+								value,
+								"custom-value": "1fr 50px 1fr",
+							};
+						} else {
+							return {
+								type: "custom",
+								repetition: "1",
+								value: "1fr",
+								"custom-value": style_value,
+							};
+						}
+					}
+
+					return {
+						type: "repeat",
+						repetition: "1",
+						value: "1fr",
+						"custom-value": "1fr 50px 1fr",
+					};
+				},
+			} as PropertyCompositeProps,
+			{}
+		);
+
+		(editor.Styles.getProperty("general", "display") as any).addOption({
+			id: "grid",
+			label: "grid",
+		});
 	});
 };
