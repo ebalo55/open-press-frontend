@@ -1,9 +1,9 @@
-import { CommandObject, Component } from "grapesjs";
-import { EditorView } from "@codemirror/view";
-import { EditorState } from "@codemirror/state";
-import { darcula } from "@uiw/codemirror-theme-darcula";
 import { css } from "@codemirror/lang-css";
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { darcula } from "@uiw/codemirror-theme-darcula";
 import { basicSetup } from "codemirror";
+import { CommandObject, Component } from "grapesjs";
 
 export interface OpenStylesheetEditorModalOptions {
 	component?: Component;
@@ -36,36 +36,27 @@ const openModal = (component: Component) => {
 	});
 };
 
-const hookNextModalOpening = (component: Component) => {
+const hookNextModalOpening = (component: Component, content?: string) => {
 	component.em.Modal.onceOpen(() => {
 		const codemirror_editor = new EditorView({
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			parent: document.getElementById("editor-container")!,
 
 			state: EditorState.create({
-				doc:        STYLESHEET_TEMPLATE,
-				extensions: [
-					basicSetup,
-					darcula,
-					css(),
-				],
+				doc: content ?? STYLESHEET_TEMPLATE,
+				extensions: [basicSetup, darcula, css()],
 			}),
 		});
 
-		document.getElementById("save-script")
-		        ?.addEventListener("click", () => {
-			        component.set("content", codemirror_editor.state.doc.toString());
-			        component.em.Modal.close();
-		        });
+		document.getElementById("save-script")?.addEventListener("click", () => {
+			component.set("content", codemirror_editor.state.doc.toString());
+			component.em.Modal.close();
+		});
 	});
 };
 
 export const openStylesheetEditorModal: CommandObject = {
-	run: (
-		     editor,
-		     sender,
-		     options: OpenStylesheetEditorModalOptions,
-	     ) => {
+	run: (editor, sender, options: OpenStylesheetEditorModalOptions) => {
 		const component = options.component || editor.getSelected();
 
 		if (!component) {
@@ -73,7 +64,7 @@ export const openStylesheetEditorModal: CommandObject = {
 			return;
 		}
 
-		hookNextModalOpening(component);
+		hookNextModalOpening(component, component.attributes.content);
 		openModal(component);
 	},
 };
