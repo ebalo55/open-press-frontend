@@ -11,7 +11,12 @@ export default function Loading(): JSX.Element {
 	const initial_navigation_url = useSafeInject<string>(INJECTION_TOKENS.instances.initial_navigation_url);
 
 	useEffect(() => {
-		router.push(initial_navigation_url ?? "/admin/dashboard");
+		if (initial_navigation_url && !initial_navigation_url.endsWith("/admin")) {
+			router.push(initial_navigation_url);
+			return;
+		}
+
+		router.push("/admin/dashboard");
 	});
 
 	return (
