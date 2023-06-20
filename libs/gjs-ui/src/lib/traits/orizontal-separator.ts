@@ -1,5 +1,4 @@
 import { TraitHorizontalSeparatorExtraSettings } from "@open-press/frontend-interfaces";
-import classNames from "classnames";
 import { ITraitView } from "grapesjs";
 
 export const TraitHorizontalSeparator: ITraitView = {
@@ -14,7 +13,7 @@ export const TraitHorizontalSeparator: ITraitView = {
 		element.style.border = "1px solid #9ca3af";
 
 		if (additional_classes) {
-			element.classList.add(...classNames(additional_classes));
+			element.classList.add(...additional_classes.split(" "));
 		}
 
 		return element;
