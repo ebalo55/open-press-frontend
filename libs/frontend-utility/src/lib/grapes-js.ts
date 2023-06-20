@@ -8,7 +8,7 @@ import {
 	GenericObject,
 } from "@open-press/frontend-interfaces";
 import { Component, TraitProperties } from "grapesjs";
-import { capitalize } from "lodash";
+import { capitalize, words } from "lodash";
 
 /**
  * Utility class for components in grapesjs
@@ -48,7 +48,7 @@ class ComponentUtility {
 			noClass: true,
 			noStyle: true,
 		})) {
-			const handler_name = `handle${capitalize(attribute)}AttributeChange`;
+			const handler_name = `handle${ComponentUtility.makePascalCaseAttribute(attribute)}AttributeChange`;
 
 			if (handler_name in component) {
 				console.log("hook applied to", handler_name);
@@ -71,7 +71,7 @@ class ComponentUtility {
 			noClass: true,
 			noStyle: true,
 		})) {
-			const handler_name = `handle${capitalize(attribute)}AttributeChange`;
+			const handler_name = `handle${ComponentUtility.makePascalCaseAttribute(attribute)}AttributeChange`;
 
 			if (handler_name in component) {
 				(component as any)[handler_name](
@@ -84,6 +84,16 @@ class ComponentUtility {
 				);
 			}
 		}
+	}
+
+	/**
+	 * Make a string a valid pascal case attribute
+	 * @param {string} attribute Attribute to make pascal case
+	 * @returns {string} Pascal case attribute
+	 * @private
+	 */
+	private static makePascalCaseAttribute(attribute: string) {
+		return words(attribute).map(capitalize).join("");
 	}
 
 	/**
