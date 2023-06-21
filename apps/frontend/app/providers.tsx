@@ -8,6 +8,7 @@ import { INJECTION_TOKENS, ReactChildren } from "@open-press/frontend-interfaces
 import { IocProvider } from "@open-press/hooks";
 import { asValue, AwilixContainer, createContainer } from "awilix";
 import { Suspense, useEffect, useState } from "react";
+import { injectable } from "./plugins";
 
 /**
  * Register the authentication token from the session storage if present and no other token is present in the local
@@ -46,11 +47,7 @@ async function fillContainer() {
 		injectionMode: "PROXY",
 	});
 
-	const modules = await Promise.all([
-		import("@open-press/components"),
-		import("@open-press/hooks"),
-		import("@open-press/frontend-utility"),
-	]);
+	const modules = await Promise.all(injectable);
 
 	container.register(
 		modules.reduce((accumulator: any, module) => {

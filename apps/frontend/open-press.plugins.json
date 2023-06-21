@@ -1,0 +1,16 @@
+{
+    "plugins": [
+        {
+            "id": "@open-press/frontend-utility",
+            "resolve": "../../../libs/frontend-utility"
+        },
+        {
+            "id": "@open-press/hooks",
+            "resolve": "../../../libs/hooks"
+        },
+        {
+            "id": "@open-press/components",
+            "resolve": "../../../libs/components"
+        }
+    ]
+}
