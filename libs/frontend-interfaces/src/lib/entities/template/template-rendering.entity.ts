@@ -1,3 +1,5 @@
-import {TemplateEntity} from "./template.entity";
+import { TemplateEntity } from "./template.entity";
 
-export type TemplateRenderingEntity = Pick<TemplateEntity, "html" | "css">
+export interface TemplateRenderingEntity extends Pick<TemplateEntity, "html" | "css"> {
+	scripts?: string;
+}
