@@ -1,0 +1,19 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"declaration": true,
+		"importHelpers": true,
+		"module": "commonjs",
+		"outDir": "dist",
+		"rootDir": "src",
+		"strict": true,
+		"target": "ESNext",
+		"lib": [
+			"ESNext"
+		],
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": [
+		"src/**/*"
+	]
+}

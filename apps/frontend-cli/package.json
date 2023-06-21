@@ -1,0 +1,49 @@
+{
+	"name": "@open-press/frontend-cli",
+	"version": "0.0.0",
+	"description": "OpenPress frontend command line interface - manage OpenPress frontend with ease",
+	"author": "ebalo @ebalo55",
+	"bin": {
+		"frontend-cli": "./bin/run"
+	},
+	"homepage": "https://github.com/override-sh/frontend-cli",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"repository": "override-sh/frontend-cli",
+	"files": [
+		"/bin",
+		"/dist",
+		"/npm-shrinkwrap.json",
+		"/oclif.manifest.json"
+	],
+	"oclif": {
+		"bin": "frontend-cli",
+		"dirname": "frontend-cli",
+		"commands": "./dist/commands",
+		"plugins": [
+			"@oclif/plugin-help"
+		],
+		"topicSeparator": " ",
+		"topics": {
+			"plugin": {
+				"description": "Interact with frontend plugins"
+			}
+		}
+	},
+	"scripts": {
+		"build": "shx rm -rf dist && tsc -b",
+		"lint": "eslint . --ext .ts --config .eslintrc",
+		"postpack": "shx rm -f oclif.manifest.json",
+		"posttest": "npm run lint",
+		"prepack": "npm run build && oclif manifest && oclif readme",
+		"test": "mocha --forbid-only \"test/**/*.test.ts\"",
+		"version": "oclif readme && git add README.md"
+	},
+	"engines": {
+		"node": ">=12.0.0"
+	},
+	"keywords": [
+		"oclif"
+	],
+	"types": "dist/index.d.ts"
+}
