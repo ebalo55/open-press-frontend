@@ -30,6 +30,15 @@
 			"@open-press/components/server": [
 				"libs/components/src/server.ts"
 			],
+			"@open-press/frontend-interfaces": [
+				"libs/frontend-interfaces/src/index.ts"
+			],
+			"@open-press/frontend-utility": [
+				"libs/frontend-utility/src/index.ts"
+			],
+			"@open-press/frontend-utility/server": [
+				"libs/frontend-utility/src/server.ts"
+			],
 			"@open-press/gjs-base-blocks": [
 				"libs/gjs-base-blocks/src/index.ts"
 			],
@@ -39,14 +48,11 @@
 			"@open-press/hooks": [
 				"libs/hooks/src/index.ts"
 			],
-			"@open-press/frontend-interfaces": [
-				"libs/frontend-interfaces/src/index.ts"
+			"@open-press/plugin-example-frontend": [
+				"libs/plugin-example-frontend/src/index.ts"
 			],
-			"@open-press/frontend-utility": [
-				"libs/frontend-utility/src/index.ts"
-			],
-			"@open-press/frontend-utility/server": [
-				"libs/frontend-utility/src/server.ts"
+			"@open-press/plugin-example-frontend/server": [
+				"libs/plugin-example-frontend/src/server.ts"
 			]
 		}
 	},

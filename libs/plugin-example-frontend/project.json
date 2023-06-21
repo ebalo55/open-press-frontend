@@ -1,0 +1,62 @@
+{
+	"name": "plugin-example-frontend",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/plugin-example-frontend/src",
+	"projectType": "library",
+	"tags": [],
+	"targets": {
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"outputs": [
+				"{options.outputFile}"
+			],
+			"options": {
+				"lintFilePatterns": [
+					"libs/plugin-example-frontend/**/*.{ts,tsx,js,jsx}"
+				]
+			}
+		},
+		"build": {
+			"executor": "@nx/rollup:rollup",
+			"outputs": [
+				"{options.outputPath}"
+			],
+			"options": {
+				"outputPath": "dist/libs/plugin-example-frontend",
+				"tsConfig": "libs/plugin-example-frontend/tsconfig.lib.json",
+				"project": "libs/plugin-example-frontend/package.json",
+				"entryFile": "libs/plugin-example-frontend/src/index.ts",
+				"external": [
+					"react",
+					"react-dom",
+					"react/jsx-runtime"
+				],
+				"rollupConfig": "@nx/react/plugins/bundle-rollup",
+				"compiler": "swc",
+				"assets": [
+					{
+						"glob": "libs/plugin-example-frontend/README.md",
+						"input": ".",
+						"output": "."
+					}
+				]
+			}
+		},
+		"test": {
+			"executor": "@nx/jest:jest",
+			"outputs": [
+				"{workspaceRoot}/coverage/{projectRoot}"
+			],
+			"options": {
+				"jestConfig": "libs/plugin-example-frontend/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			}
+		}
+	}
+}
