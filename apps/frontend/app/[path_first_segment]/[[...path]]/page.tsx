@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
-import {CONFIG} from "@frontend/config";
-import {FC, Suspense, useEffect, useMemo, useState} from "react";
-import {useInject} from "@open-press/hooks";
-import {INJECTION_TOKENS, TemplateRenderingEntity} from "@open-press/frontend-interfaces";
+import { CONFIG } from "@frontend/config";
+import { INJECTION_TOKENS, TemplateRenderingEntity } from "@open-press/frontend-interfaces";
+import { useInject } from "@open-press/hooks";
+import Script from "next/script";
+import { FC, Suspense, useEffect, useMemo, useState } from "react";
 
 interface Params {
-    path?: string[];
-    path_first_segment: string
+	path?: string[];
+	path_first_segment: string;
 }
 
 interface Props {
@@ -31,8 +32,8 @@ async function getData(path: string): Promise<TemplateRenderingEntity> {
  * This particular behaviours is achieved by prefixing the `optional catch-all` path with a `dynamic segment`
  * that automatically handles path on the same route folder.
  *
- * The achieved behaviour differs from the one that will be achieved by using only an `optional catch-all` route at the root
- * because of what we will name "specificity" levels assigned to paths.
+ * The achieved behaviour differs from the one that will be achieved by using only an `optional catch-all` route at the
+ * root because of what we will name "specificity" levels assigned to paths.
  *
  * Here are the current specificity levels of next 13:
  *  - optional catch all: {specificity: 0}
@@ -46,7 +47,8 @@ async function getData(path: string): Promise<TemplateRenderingEntity> {
  *  - {path: "/admin", handler: "admin/dashboard/page.tsx", relative_catch_all: false}
  *  - {path: "/sample", handler: "[path_first_segment]/[[...path]]/page.tsx", relative_catch_all: true}
  *  - {path: "/sample/fragment", handler: "[path_first_segment]/[[...path]]/page.tsx", relative_catch_all: true}
- *  - {path: "/sample/fragment/sub/path/with/multiple/levels", handler: "[path_first_segment]/[[...path]]/page.tsx", relative_catch_all: true}
+ *  - {path: "/sample/fragment/sub/path/with/multiple/levels", handler: "[path_first_segment]/[[...path]]/page.tsx",
+ * relative_catch_all: true}
  *
  * @param params
  * @constructor
@@ -80,17 +82,25 @@ export default function Page({params}: Props): JSX.Element {
     )
 
     return (
-        <>
-            <Suspense fallback={<FullPage/>}>
-                {
-                    data && (
-                        <>
-                            <style>{data.css}</style>
-                            <main id={body_id} dangerouslySetInnerHTML={{__html: data.html}}></main>
-                        </>
-                    )
-                }
-            </Suspense>
-        </>
-    );
+		<>
+			<Suspense fallback={<FullPage />}>
+				{data && (
+					<>
+						<style>{data.css}</style>
+						<main
+							id={body_id}
+							dangerouslySetInnerHTML={{ __html: data.html }}
+						></main>
+						{data.scripts && (
+							<Script
+								id={"home_script"}
+								strategy="afterInteractive"
+								dangerouslySetInnerHTML={{ __html: data.scripts }}
+							/>
+						)}
+					</>
+				)}
+			</Suspense>
+		</>
+	);
 }
