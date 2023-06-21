@@ -77,7 +77,19 @@ export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 					},
 				},
 				canvas: {
-					scripts: ["https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"],
+					scripts: [
+						"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio",
+						`tailwind.config = {
+							content: [],
+							corePlugins: {
+								preflight: true,
+							},
+							theme: {
+								extend: {},
+							},
+							plugins: [],
+						};`,
+					],
 					styles: ["https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"],
 				},
 				blockManager: {
