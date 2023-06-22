@@ -1,9 +1,9 @@
 "use client";
 
-import { BlockEditorProps, INJECTION_TOKENS } from "@open-press/frontend-interfaces";
-import { BaseBlocksPlugin, makeBlockLabel } from "@open-press/gjs-base-blocks";
-import { UiPlugin } from "@open-press/gjs-ui";
-import { useInject } from "@open-press/hooks";
+import { BlockEditorProps, INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
+import { BaseBlocksPlugin, makeBlockLabel } from "@aetheria/gjs-base-blocks";
+import { UiPlugin } from "@aetheria/gjs-ui";
+import { useInject } from "@aetheria/hooks";
 import grapesjs, { Editor, ProjectData } from "grapesjs";
 import GjsStyleBgPlugin from "grapesjs-style-bg";
 import GjsStyleGradientPlugin from "grapesjs-style-gradient";

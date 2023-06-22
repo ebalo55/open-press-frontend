@@ -2,7 +2,7 @@
 
 /* istanbul ignore file */
 
-import { getCurrentEventSelector, getElementOffset, updateValueAtIndex } from "@open-press/frontend-utility";
+import { getCurrentEventSelector, getElementOffset, updateValueAtIndex } from "@aetheria/frontend-utility";
 import { DragEvent, useCallback, useEffect, useState } from "react";
 
 export const useDraggableElement = (

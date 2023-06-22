@@ -1,8 +1,8 @@
 "use client";
 
+import { INJECTION_TOKENS, TemplateRenderingEntity } from "@aetheria/frontend-interfaces";
+import { useInject } from "@aetheria/hooks";
 import { CONFIG } from "@frontend/config";
-import { INJECTION_TOKENS, TemplateRenderingEntity } from "@open-press/frontend-interfaces";
-import { useInject } from "@open-press/hooks";
 import Script from "next/script";
 import { FC, Suspense, useEffect, useMemo, useState } from "react";
 

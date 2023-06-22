@@ -1,7 +1,7 @@
 "use client";
 
-import { INJECTION_TOKENS, TableLoaderProps } from "@open-press/frontend-interfaces";
-import { useInject } from "@open-press/hooks";
+import { INJECTION_TOKENS, TableLoaderProps } from "@aetheria/frontend-interfaces";
+import { useInject } from "@aetheria/hooks";
 import { FC } from "react";
 
 export const DataTableBodyLoading: FC = () => {

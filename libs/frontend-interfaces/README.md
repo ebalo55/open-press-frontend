@@ -1,3 +1,3 @@
-# open-press-interfaces
+# aetheria-interfaces
 
 This library was generated with [Nx](https://nx.dev).

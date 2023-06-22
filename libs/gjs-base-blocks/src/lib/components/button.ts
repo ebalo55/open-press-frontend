@@ -1,4 +1,4 @@
-import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
+import { TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
 import classNames from "classnames";
 import { Editor } from "grapesjs";
 

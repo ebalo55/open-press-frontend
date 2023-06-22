@@ -1,5 +1,1 @@
-export const injectable = [
-	import("@open-press/components"),
-	import("@open-press/hooks"),
-	import("@open-press/frontend-utility"),
-];
+export const injectable = [import("@aetheria/components"), import("@aetheria/hooks"), import("@aetheria/frontend-utility")];

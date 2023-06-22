@@ -1,9 +1,9 @@
 "use client";
 
+import { DeleteConfirmationModalProps, INJECTION_TOKENS, TemplateEntity } from "@aetheria/frontend-interfaces";
 import { CONFIG } from "@frontend/config";
 import { modals } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
-import { DeleteConfirmationModalProps, INJECTION_TOKENS, TemplateEntity } from "@open-press/frontend-interfaces";
 import { IconCheck } from "@tabler/icons-react";
 import axios from "axios";
 import { FC, useCallback } from "react";

@@ -20,10 +20,10 @@ export const Footer: FC = () => {
 			>
 				<Text size={"sm"}>
 					<Link
-						href={"https://open-press.override.sh"}
+						href={"https://aetheria.override.sh"}
 						target={"_blank"}
 					>
-						OpenPress
+						Aetheria
 					</Link>{" "}
 					© {DateTime.now().year}
 				</Text>

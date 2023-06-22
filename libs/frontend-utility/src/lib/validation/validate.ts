@@ -1,4 +1,4 @@
-import { Constructor } from "@open-press/frontend-interfaces";
+import { Constructor } from "@aetheria/frontend-interfaces";
 import { z, ZodError } from "zod";
 
 export const validate = <R, T extends z.ZodTypeAny = z.ZodTypeAny, E extends Constructor<Error> = Constructor<Error>>(

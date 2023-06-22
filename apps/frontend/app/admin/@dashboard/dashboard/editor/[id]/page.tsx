@@ -1,4 +1,4 @@
-import { BlockEditor } from "@open-press/components";
+import { BlockEditor } from "@aetheria/components";
 
 interface Params {
 	id: string;

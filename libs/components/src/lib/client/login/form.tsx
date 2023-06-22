@@ -1,20 +1,20 @@
 "use client";
 
-import {Button, Checkbox, LoadingOverlay, PasswordInput, Stack, TextInput} from "@mantine/core";
-import {useForm, zodResolver} from "@mantine/form";
-import {FC} from "react";
-import {z} from "zod";
-import {CONFIG} from "@frontend/config";
-import { useIoc } from "@open-press/hooks";
-import { INJECTION_TOKENS } from "@open-press/frontend-interfaces";
+import { INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
+import { useIoc } from "@aetheria/hooks";
+import { CONFIG } from "@frontend/config";
+import { Button, Checkbox, LoadingOverlay, PasswordInput, Stack, TextInput } from "@mantine/core";
+import { useForm, zodResolver } from "@mantine/form";
+import { useDisclosure, useLocalStorage, useSessionStorage } from "@mantine/hooks";
 import { asValue } from "awilix";
-import {useRouter} from "next/navigation";
-import {useDisclosure, useLocalStorage, useSessionStorage} from "@mantine/hooks";
+import { useRouter } from "next/navigation";
+import { FC } from "react";
+import { z } from "zod";
 
 const login_schema = z.object({
-    email: z.string().email().nonempty(),
-    password: z.string().nonempty(),
-    remember_me: z.boolean(),
+	email: z.string().email().nonempty(),
+	password: z.string().nonempty(),
+	remember_me: z.boolean(),
 });
 
 export const Form: FC = () => {

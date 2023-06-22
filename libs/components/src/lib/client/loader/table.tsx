@@ -1,8 +1,8 @@
 "use client";
 
+import { INJECTION_TOKENS, TableLoaderProps } from "@aetheria/frontend-interfaces";
+import { useInject } from "@aetheria/hooks";
 import { LoaderProps, Text } from "@mantine/core";
-import { INJECTION_TOKENS, TableLoaderProps } from "@open-press/frontend-interfaces";
-import { useInject } from "@open-press/hooks";
 import { FC } from "react";
 
 export const Table: FC<TableLoaderProps> = ({ columns, children, ...others }) => {

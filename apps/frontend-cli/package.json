@@ -1,7 +1,7 @@
 {
-	"name": "@open-press/frontend-cli",
+	"name": "@aetheria/frontend-cli",
 	"version": "0.0.0",
-	"description": "OpenPress frontend command line interface - manage OpenPress frontend with ease",
+	"description": "Aetheria frontend command line interface - manage Aetheria frontend with ease",
 	"author": "ebalo @ebalo55",
 	"bin": {
 		"frontend-cli": "./bin/run"

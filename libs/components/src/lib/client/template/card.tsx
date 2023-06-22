@@ -1,9 +1,9 @@
 "use client";
 
+import { DataTableBodyProps, INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
+import { safeValidate, ValidStatusCodeSchema } from "@aetheria/frontend-utility/server";
+import { useInject, useTemplates } from "@aetheria/hooks";
 import { Card as MantineCard, Table } from "@mantine/core";
-import { DataTableBodyProps, INJECTION_TOKENS } from "@open-press/frontend-interfaces";
-import { safeValidate, ValidStatusCodeSchema } from "@open-press/frontend-utility/server";
-import { useInject, useTemplates } from "@open-press/hooks";
 import { FC, useMemo } from "react";
 
 export const Card: FC = () => {

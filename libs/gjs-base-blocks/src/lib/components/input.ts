@@ -1,9 +1,9 @@
-import { GrapesJsUtility } from "@open-press/frontend-utility";
-import { TRAIT_HORIZONTAL_SEPARATOR, TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
 import {
 	ComponentAttributeChangeHandlerOptions,
 	TraitHorizontalSeparatorExtraSettings,
-} from "@open-press/frontend-interfaces";
+} from "@aetheria/frontend-interfaces";
+import { GrapesJsUtility } from "@aetheria/frontend-utility";
+import { TRAIT_HORIZONTAL_SEPARATOR, TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
 import { Component, Editor } from "grapesjs";
 
 type InputTypes =

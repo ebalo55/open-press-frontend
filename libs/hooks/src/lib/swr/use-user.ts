@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { INJECTION_TOKENS, UserEntity } from "@open-press/frontend-interfaces";
+import { INJECTION_TOKENS, UserEntity } from "@aetheria/frontend-interfaces";
+import { useSafeInject } from "@aetheria/hooks";
 import { CONFIG } from "@frontend/config";
-import {useSafeInject} from "@open-press/hooks";
-import useSWR from "swr";
 import axios from "axios";
+import useSWR from "swr";
 
 /**
  * Get the current logged in user and register it in the IOC container

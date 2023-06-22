@@ -1,7 +1,7 @@
 "use client";
 
+import { DeleteConfirmationModalProps } from "@aetheria/frontend-interfaces";
 import { Text } from "@mantine/core";
-import { DeleteConfirmationModalProps } from "@open-press/frontend-interfaces";
 import { FC } from "react";
 
 export const DeleteConfirmationModal: FC<DeleteConfirmationModalProps> = ({ template_name }) => {

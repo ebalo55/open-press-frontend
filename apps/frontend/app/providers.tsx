@@ -1,11 +1,11 @@
 "use client";
 
+import { nunito } from "@aetheria/components/server";
+import { INJECTION_TOKENS, ReactChildren } from "@aetheria/frontend-interfaces";
+import { IocProvider } from "@aetheria/hooks";
 import { ColorScheme, ColorSchemeProvider, Global, MantineProvider, Paper } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
-import { nunito } from "@open-press/components/server";
-import { INJECTION_TOKENS, ReactChildren } from "@open-press/frontend-interfaces";
-import { IocProvider } from "@open-press/hooks";
 import { asValue, AwilixContainer, createContainer } from "awilix";
 import { Suspense, useEffect, useState } from "react";
 import { injectable } from "./plugins";

@@ -1,6 +1,6 @@
-import { ComponentAttributeChangeHandlerOptions } from "@open-press/frontend-interfaces";
-import { GrapesJsUtility } from "@open-press/frontend-utility";
-import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
+import { ComponentAttributeChangeHandlerOptions } from "@aetheria/frontend-interfaces";
+import { GrapesJsUtility } from "@aetheria/frontend-utility";
+import { TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
 import { Component, Editor } from "grapesjs";
 import { OPEN_STYLESHEET_EDITOR_MODAL, OpenStylesheetEditorModalOptions } from "../commands";
 

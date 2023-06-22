@@ -1,7 +1,7 @@
 {
-	"name": "open-press-hooks",
+	"name": "aetheria-hooks",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
-	"sourceRoot": "libs/open-press-hooks/src",
+	"sourceRoot": "libs/aetheria-hooks/src",
 	"projectType": "library",
 	"targets": {
 		"lint": {
@@ -11,7 +11,7 @@
 			],
 			"options": {
 				"lintFilePatterns": [
-					"libs/open-press-hooks/**/*.{ts,tsx,js,jsx}"
+					"libs/aetheria-hooks/**/*.{ts,tsx,js,jsx}"
 				]
 			}
 		},
@@ -21,7 +21,7 @@
 				"{workspaceRoot}/coverage/{projectRoot}"
 			],
 			"options": {
-				"jestConfig": "libs/open-press-hooks/jest.config.ts",
+				"jestConfig": "libs/aetheria-hooks/jest.config.ts",
 				"passWithNoTests": true
 			},
 			"configurations": {

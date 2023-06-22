@@ -1,8 +1,8 @@
 "use client";
 
+import { INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
+import { useInject } from "@aetheria/hooks";
 import { Card as MantineCard } from "@mantine/core";
-import { INJECTION_TOKENS } from "@open-press/frontend-interfaces";
-import { useInject } from "@open-press/hooks";
 import { FC } from "react";
 
 export const Card: FC = () => {

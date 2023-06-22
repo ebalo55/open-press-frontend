@@ -1,8 +1,8 @@
 "use client";
 
+import { DataTableBodyProps } from "@aetheria/frontend-interfaces";
+import { useTemplates } from "@aetheria/hooks";
 import { Button, Group } from "@mantine/core";
-import { DataTableBodyProps } from "@open-press/frontend-interfaces";
-import { useTemplates } from "@open-press/hooks";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { DateTime } from "luxon";
 import Link from "next/link";

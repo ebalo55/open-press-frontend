@@ -1,18 +1,10 @@
 /* eslint-disable */
 export default {
-	displayName: "open-press-hooks",
+	displayName: "aetheria-hooks",
 	preset: "../../jest.preset.js",
 	transform: {
-		"^.+\\.[tj]sx?$": [
-			"@swc/jest",
-			{ jsc: { transform: { react: { runtime: "automatic" } } } },
-		],
+		"^.+\\.[tj]sx?$": ["@swc/jest", { jsc: { transform: { react: { runtime: "automatic" } } } }],
 	},
-	moduleFileExtensions: [
-		"ts",
-		"tsx",
-		"js",
-		"jsx",
-	],
-	coverageDirectory: "../../coverage/libs/open-press-hooks",
+	moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+	coverageDirectory: "../../coverage/libs/aetheria-hooks",
 };

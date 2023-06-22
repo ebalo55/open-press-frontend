@@ -1,7 +1,7 @@
 "use client";
 
-import { AdminBaseComponentProperties, INJECTION_TOKENS } from "@open-press/frontend-interfaces";
-import { useInject, useIoc, useUser } from "@open-press/hooks";
+import { AdminBaseComponentProperties, INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
+import { useInject, useIoc, useUser } from "@aetheria/hooks";
 import { asValue } from "awilix";
 import { FC, Suspense, useEffect } from "react";
 

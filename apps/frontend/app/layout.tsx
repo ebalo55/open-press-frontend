@@ -1,5 +1,5 @@
+import { ReactChildren } from "@aetheria/frontend-interfaces";
 import { CONFIG } from "@frontend/config";
-import { ReactChildren } from "@open-press/frontend-interfaces";
 
 import "@tabler/icons-webfont/tabler-icons.min.css";
 import { Metadata } from "next";

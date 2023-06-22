@@ -24,34 +24,34 @@
 			"@frontend/config/server": [
 				"libs/config/src/server.ts"
 			],
-			"@open-press/components": [
+			"@aetheria/components": [
 				"libs/components/src/index.ts"
 			],
-			"@open-press/components/server": [
+			"@aetheria/components/server": [
 				"libs/components/src/server.ts"
 			],
-			"@open-press/frontend-interfaces": [
+			"@aetheria/frontend-interfaces": [
 				"libs/frontend-interfaces/src/index.ts"
 			],
-			"@open-press/frontend-utility": [
+			"@aetheria/frontend-utility": [
 				"libs/frontend-utility/src/index.ts"
 			],
-			"@open-press/frontend-utility/server": [
+			"@aetheria/frontend-utility/server": [
 				"libs/frontend-utility/src/server.ts"
 			],
-			"@open-press/gjs-base-blocks": [
+			"@aetheria/gjs-base-blocks": [
 				"libs/gjs-base-blocks/src/index.ts"
 			],
-			"@open-press/gjs-ui": [
+			"@aetheria/gjs-ui": [
 				"libs/gjs-ui/src/index.ts"
 			],
-			"@open-press/hooks": [
+			"@aetheria/hooks": [
 				"libs/hooks/src/index.ts"
 			],
-			"@open-press/plugin-example-frontend": [
+			"@aetheria/plugin-example-frontend": [
 				"libs/plugin-example-frontend/src/index.ts"
 			],
-			"@open-press/plugin-example-frontend/server": [
+			"@aetheria/plugin-example-frontend/server": [
 				"libs/plugin-example-frontend/src/server.ts"
 			]
 		}

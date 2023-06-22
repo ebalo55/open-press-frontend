@@ -1,5 +1,5 @@
+import { NullableHTMLElement } from "@aetheria/frontend-interfaces";
 import { CommandObject, Editor } from "grapesjs";
-import { NullableHTMLElement } from "@open-press/frontend-interfaces";
 
 type ShowCommandType = CommandObject & {
 	getEditorRow(editor: Editor): HTMLElement;

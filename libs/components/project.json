@@ -1,7 +1,7 @@
 {
-	"name": "open-press-components",
+	"name": "aetheria-components",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
-	"sourceRoot": "libs/open-press-components/src",
+	"sourceRoot": "libs/aetheria-components/src",
 	"projectType": "library",
 	"targets": {
 		"lint": {
@@ -11,7 +11,7 @@
 			],
 			"options": {
 				"lintFilePatterns": [
-					"libs/open-press-components/**/*.{ts,tsx,js,jsx}"
+					"libs/aetheria-components/**/*.{ts,tsx,js,jsx}"
 				]
 			}
 		},
@@ -21,7 +21,7 @@
 				"{workspaceRoot}/coverage/{projectRoot}"
 			],
 			"options": {
-				"jestConfig": "libs/open-press-components/jest.config.ts",
+				"jestConfig": "libs/aetheria-components/jest.config.ts",
 				"passWithNoTests": true
 			},
 			"configurations": {

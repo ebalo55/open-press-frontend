@@ -1,8 +1,12 @@
-import { Constructor } from "@open-press/frontend-interfaces";
+import { Constructor } from "@aetheria/frontend-interfaces";
 import { z } from "zod";
 import { validate } from "./validate";
 
-export const validateMany = <R, T extends z.ZodTypeAny = z.ZodTypeAny, E extends Constructor<Error> = Constructor<Error>>(
+export const validateMany = <
+	R,
+	T extends z.ZodTypeAny = z.ZodTypeAny,
+	E extends Constructor<Error> = Constructor<Error>
+>(
 	value: any[],
 	schema: T[],
 	error: E = Error as any

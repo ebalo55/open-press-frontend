@@ -1,4 +1,4 @@
-import { TraitHorizontalSeparatorExtraSettings } from "@open-press/frontend-interfaces";
+import { TraitHorizontalSeparatorExtraSettings } from "@aetheria/frontend-interfaces";
 import { ITraitView } from "grapesjs";
 
 export const TraitHorizontalSeparator: ITraitView = {

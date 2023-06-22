@@ -1,8 +1,8 @@
 "use client";
 
+import { INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
+import { useInject } from "@aetheria/hooks";
 import { Flex } from "@mantine/core";
-import { INJECTION_TOKENS } from "@open-press/frontend-interfaces";
-import { useInject } from "@open-press/hooks";
 import { FC, Suspense } from "react";
 
 export const LoginBase: FC = () => {

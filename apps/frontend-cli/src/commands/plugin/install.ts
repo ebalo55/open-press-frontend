@@ -16,7 +16,7 @@ export class PluginInstall extends BaseCommand<typeof PluginInstall> {
 			char: "c",
 			description: "The path to the plugins configuration file",
 			required: true,
-			default: "./apps/frontend/open-press.plugins.json",
+			default: "./apps/frontend/aetheria.plugins.json",
 		}),
 		resolution_path: Flags.string({
 			char: "r",

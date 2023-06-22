@@ -1,4 +1,4 @@
-import { LoginBase } from "@open-press/components";
+import { LoginBase } from "@aetheria/components";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

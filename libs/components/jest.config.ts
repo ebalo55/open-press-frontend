@@ -1,18 +1,10 @@
 /* eslint-disable */
 export default {
-	displayName: "open-press-components",
+	displayName: "aetheria-components",
 	preset: "../../jest.preset.js",
 	transform: {
-		"^.+\\.[tj]sx?$": [
-			"@swc/jest",
-			{ jsc: { transform: { react: { runtime: "automatic" } } } },
-		],
+		"^.+\\.[tj]sx?$": ["@swc/jest", { jsc: { transform: { react: { runtime: "automatic" } } } }],
 	},
-	moduleFileExtensions: [
-		"ts",
-		"tsx",
-		"js",
-		"jsx",
-	],
-	coverageDirectory: "../../coverage/libs/open-press-components",
+	moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+	coverageDirectory: "../../coverage/libs/aetheria-components",
 };
