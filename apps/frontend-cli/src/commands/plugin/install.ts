@@ -1,6 +1,7 @@
 import { Flags } from "@oclif/core";
 import { mkdir, readdir, readFile, symlink, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import * as typescript from "typescript";
 import { BaseCommand } from "../../base";
 import { NextConventionalFilenames } from "../../constants";
 import { loadPlugin, resolvePlugin } from "../../helpers";
@@ -56,8 +57,10 @@ export class PluginInstall extends BaseCommand<typeof PluginInstall> {
 			await this.runLocalInstallation(configuration);
 		} else if (this.flags.tarball) {
 			this.warn("Tarball installation is not yet supported");
+			this.exit(1);
 		} else if (this.flags.npm) {
 			this.warn("NPM installation is not yet supported");
+			this.exit(1);
 		}
 	}
 
@@ -78,6 +81,11 @@ export class PluginInstall extends BaseCommand<typeof PluginInstall> {
 		await writeFile(this.flags.configuration, JSON.stringify(configuration, null, 4));
 	}
 
+	/**
+	 * Install a local plugin
+	 * @param {ConfigurationJSON} configuration The configuration file
+	 * @returns {Promise<void>}
+	 */
 	async runLocalInstallation(configuration: ConfigurationJSON) {
 		const plugin = loadPlugin(
 			await resolvePlugin(this.flags.configuration, {
@@ -92,8 +100,96 @@ export class PluginInstall extends BaseCommand<typeof PluginInstall> {
 
 		await this.install(plugin, configuration);
 		await this.importNextRoutes();
+		await this.importReactComponents();
 	}
 
+	/**
+	 * Import the React components from the plugin
+	 * @returns {Promise<void>}
+	 */
+	async importReactComponents() {
+		this.log(`Importing react components`);
+
+		const resolution_path = resolve(this.flags.configuration, this.flags.resolution_path, "src/index.ts");
+		try {
+			const index_content = await readFile(resolution_path, "utf-8");
+
+			if (index_content.length === 0) {
+				this.warn(`Cannot find default react components export file. No react components will be imported.`);
+				return;
+			}
+
+			const plugins_source_file_path = resolve(this.flags.app_path, "plugins.ts");
+			const plugins_source_file_content = await readFile(plugins_source_file_path, "utf-8");
+
+			const plugins_source_file = typescript.createSourceFile(
+				plugins_source_file_path,
+				plugins_source_file_content,
+				typescript.ScriptTarget.Latest,
+				true
+			);
+
+			const new_import = `\timport("${this.flags.name}"),`;
+			let have_found_injection_point = false,
+				have_confirmed_injection_point = false,
+				last_import_end = 0;
+
+			// Visit the AST to find the injection point and the last import
+			const visit = (node: typescript.Node) => {
+				// If an identifier is found and it's the injectable identifier, we've -- probably -- found the
+				// injection point, it need to be confirmed by finding an array literal expression containing at least
+				// an import
+				if (typescript.isIdentifier(node) && node.text === "injectable") {
+					this.logDebug(`Found plugins injection point`);
+					have_found_injection_point = true;
+				}
+				// If an array literal expression is found and we've found the injection point, we need to confirm
+				// it by finding an import, if we do, we can confirm the injection point
+				else if (typescript.isArrayLiteralExpression(node)) {
+					if (have_found_injection_point && node.getText().includes("import(")) {
+						this.logDebug(`Injection point confirmed, found import array`);
+						have_confirmed_injection_point = true;
+					}
+				}
+				// If we've found the injection point and we've confirmed it, we're now looking for the last import
+				else if (have_confirmed_injection_point && typescript.isCallExpression(node)) {
+					last_import_end = node.getEnd() + 1;
+					this.logDebug(`Found call expression ending at ${last_import_end}`);
+				}
+
+				node.forEachChild(visit);
+			};
+
+			// Visit the AST to find the injection point
+			plugins_source_file.forEachChild(visit);
+
+			// If we've found the injection point and we've confirmed it, we can insert the new import
+			if (have_confirmed_injection_point && last_import_end > 0) {
+				this.logDebug(`Confirmed last import at ${last_import_end}, inserting new import`);
+
+				// Insert the new import at the end of the last import
+				const new_plugins_source_file_content =
+					plugins_source_file_content.slice(0, last_import_end) +
+					"\n" +
+					new_import +
+					plugins_source_file_content.slice(last_import_end);
+
+				await writeFile(plugins_source_file_path, new_plugins_source_file_content);
+				this.log(`React components imported`);
+			} else {
+				this.warn(`Cannot find injection point for react components. No react component have been imported.`);
+			}
+		} catch (e: any) {
+			this.logDebug(e.message);
+			this.warn(`Cannot find default react components export file. No react components will be imported.`);
+			return;
+		}
+	}
+
+	/**
+	 * Import the Next.js routes from the plugin creating the necessary symlinks
+	 * @returns {Promise<void>}
+	 */
 	async importNextRoutes() {
 		this.log(`Importing next routes`);
 
@@ -104,11 +200,14 @@ export class PluginInstall extends BaseCommand<typeof PluginInstall> {
 			withFileTypes: true,
 		});
 
+		// Filter the routes to import only the files that are in the resolution path and have a conventional name
+		// will be imported as the other may only be used by the plugin itself
 		const routesToImport = routes.filter(
 			(value) => value.isFile() && NextConventionalFilenames.some((filename) => filename.test(value.name))
 		);
 
 		for (const route of routesToImport) {
+			// The folder is the path without the resolution path
 			const folder = route.path.replaceAll(`${resolution_path}/`, "");
 
 			try {
