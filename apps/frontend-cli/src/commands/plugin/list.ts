@@ -14,7 +14,7 @@ export class PluginList extends BaseCommand<typeof PluginList> {
 			char: "c",
 			description: "The path to the plugins configuration file",
 			required: true,
-			default: "./apps/frontend/aetheria.plugins.json",
+			default: "./apps/frontend/aetheria.json",
 		}),
 	};
 
