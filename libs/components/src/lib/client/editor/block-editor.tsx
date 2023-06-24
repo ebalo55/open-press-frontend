@@ -17,9 +17,10 @@ import "grapick/dist/grapick.min.css";
 import { debounce } from "lodash";
 import { FC, useEffect, useState } from "react";
 import "./editor.css";
+import { Menu } from "./menu";
 
 /**
- * @description Debounced autosave function for 5 seconds
+ * @description Debounced auto-save function for 5 seconds
  * @type {DebouncedFunc<(editor: Editor) => Promise<void>>} debounced function
  */
 const debounced_autosave = debounce(async (editor: Editor) => {
@@ -77,19 +78,7 @@ export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 					},
 				},
 				canvas: {
-					scripts: [
-						"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio",
-						`tailwind.config = {
-							content: [],
-							corePlugins: {
-								preflight: true,
-							},
-							theme: {
-								extend: {},
-							},
-							plugins: [],
-						};`,
-					],
+					scripts: ["https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"],
 					styles: ["https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"],
 				},
 				blockManager: {
@@ -146,6 +135,7 @@ export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 										}),
 									};
 								});
+
 								return {
 									data,
 									rendered_pages,
@@ -187,6 +177,7 @@ export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 						style={{ display: "none" }}
 					></div>
 					<div className={"blocks-container"}></div>
+					<Menu id={id} />
 				</div>
 				<div className={"editor-canvas"}>
 					<div id={"gjs"}></div>

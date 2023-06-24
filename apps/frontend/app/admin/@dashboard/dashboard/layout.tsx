@@ -3,19 +3,20 @@
 import { INJECTION_TOKENS, ReactChildren } from "@aetheria/frontend-interfaces";
 import { useSafeInject } from "@aetheria/hooks";
 import { AppShell } from "@mantine/core";
+import { FC } from "react";
 
 export default function Layout({ children }: ReactChildren): JSX.Element {
-	const navbar = useSafeInject<JSX.Element>(INJECTION_TOKENS.components.dashboard.navbar);
-	const footer = useSafeInject<JSX.Element>(INJECTION_TOKENS.components.dashboard.footer);
-	const header = useSafeInject<JSX.Element>(INJECTION_TOKENS.components.dashboard.header);
-	const sidebar = useSafeInject<JSX.Element>(INJECTION_TOKENS.components.dashboard.sidebar);
+	const Navbar = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.navbar);
+	const Footer = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.footer);
+	const Header = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.header);
+	const Sidebar = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.sidebar);
 
 	return (
 		<AppShell
-			navbar={navbar}
-			footer={footer}
-			header={header}
-			aside={sidebar}
+			navbar={Navbar && <Navbar />}
+			footer={Footer && <Footer />}
+			header={Header && <Header />}
+			aside={Sidebar && <Sidebar />}
 		>
 			{children}
 		</AppShell>

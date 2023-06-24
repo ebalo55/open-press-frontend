@@ -50,9 +50,6 @@
 			],
 			"@aetheria/plugin-example-frontend": [
 				"libs/plugin-example-frontend/src/index.ts"
-			],
-			"@aetheria/plugin-example-frontend/server": [
-				"libs/plugin-example-frontend/src/server.ts"
 			]
 		}
 	},

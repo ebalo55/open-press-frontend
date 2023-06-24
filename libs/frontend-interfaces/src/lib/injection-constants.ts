@@ -17,6 +17,7 @@ export const INJECTION_TOKENS = {
 		login: "Login",
 		loaders: "Loaders",
 		templates: "Templates",
+		editor: "Editor",
 
 		// Dashboard components
 		dashboard: {

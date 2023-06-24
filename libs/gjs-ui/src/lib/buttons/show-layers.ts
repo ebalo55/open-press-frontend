@@ -6,6 +6,7 @@ export const ShowLayersButton: Button = {
 	active: false,
 	label: `<i class="ti ti-box-multiple"></i>`,
 	command: SHOW_LAYERS,
+	className: "layers-button",
 	// Once activated disable the possibility to turn it off
 	togglable: false,
 } as Button & { label: string; command: UiCommandNames };

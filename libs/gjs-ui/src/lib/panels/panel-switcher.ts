@@ -1,5 +1,5 @@
 import { Panel } from "grapesjs";
-import { HomeButton, ShowLayersButton, ShowStyleButton, ShowTraitsButton } from "../buttons";
+import { HomeButton, MenuButton, ShowLayersButton, ShowStyleButton, ShowTraitsButton } from "../buttons";
 import { ShowBlocksButton } from "../buttons/show-blocks";
 
 export const PanelSwitcherPanel: Panel = {
@@ -9,5 +9,5 @@ export const PanelSwitcherPanel: Panel = {
 	el: ".panel__switcher",
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	buttons: [HomeButton, ShowLayersButton, ShowStyleButton, ShowTraitsButton, ShowBlocksButton],
+	buttons: [HomeButton, MenuButton, ShowLayersButton, ShowStyleButton, ShowTraitsButton, ShowBlocksButton],
 };

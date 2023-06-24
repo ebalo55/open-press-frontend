@@ -70,7 +70,6 @@ export const StyleComponent = (editor: Editor) => {
 				value: "link" | "custom",
 				options: ComponentAttributeChangeHandlerOptions
 			) {
-				console.log("handleLinkTypeAttributeChange", value, options);
 				if (value === "link") {
 					this.set("tagName", "link");
 				} else {

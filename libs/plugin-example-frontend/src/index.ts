@@ -1,4 +1,3 @@
-// Use this file to export React client components (e.g. those with 'use client' directive) or other non-server
-// utilities
-
-// export * from "./lib/plugin-example-frontend";
+export * from "./example-component";
+export * from "./components/nested-example-component";
+export * from "./components/dashboard-header";

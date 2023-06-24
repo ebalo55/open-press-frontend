@@ -4,6 +4,7 @@ import { DataTableBody } from "./data-table-body";
 import { DataTableBodyLoading } from "./data-table-body-loading";
 import { DataTableHeader } from "./data-table-header";
 import { DeleteConfirmationModal } from "./delete-confirmation-modal";
+import { NewTemplateModal } from "./new-template-modal";
 
 export const Templates = {
 	CardHeader,
@@ -12,4 +13,5 @@ export const Templates = {
 	DataTableBodyLoading,
 	DataTableBody,
 	DeleteConfirmationModal,
+	NewTemplateModal,
 };

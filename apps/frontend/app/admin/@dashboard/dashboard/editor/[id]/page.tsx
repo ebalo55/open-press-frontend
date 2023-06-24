@@ -19,7 +19,10 @@ export default function Page({ params }: Props) {
 				overflow: "hidden",
 			}}
 		>
-			<BlockEditor id={id} />
+			<BlockEditor
+				id={id}
+				operation={"update"}
+			/>
 		</div>
 	);
 }

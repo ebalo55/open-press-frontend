@@ -51,7 +51,6 @@ class ComponentUtility {
 			const handler_name = `handle${ComponentUtility.makePascalCaseAttribute(attribute)}AttributeChange`;
 
 			if (handler_name in component) {
-				console.log("hook applied to", handler_name);
 				component.on(
 					`change:attributes:${attribute}`,
 					ComponentUtility.rejectIdUpdatesMiddleware((component as any)[handler_name]),

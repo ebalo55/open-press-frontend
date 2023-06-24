@@ -11,6 +11,8 @@ import {
 	BACK_HOME,
 	BackHomeCommand,
 	IMPORT_CODE,
+	MENU,
+	MenuCommand,
 	OpenImportCodeModal,
 	SET_DEVICE_DESKTOP,
 	SET_DEVICE_MOBILE,
@@ -73,9 +75,12 @@ export const UiPlugin = (editor: Editor) => {
 			id: BACK_HOME,
 			command: BackHomeCommand,
 		},
+		{
+			id: MENU,
+			command: MenuCommand,
+		},
 	];
 	ui_commands.forEach(({ id, command }) => {
-		console.log("Adding command", id, command);
 		editor.Commands.add(id, command);
 	});
 
