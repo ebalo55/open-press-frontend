@@ -40,7 +40,7 @@ const debounced_autosave = debounce(async (editor: Editor) => {
 	if (btn) {
 		btn.style.display = "none";
 	}
-}, 5_000);
+}, 2_500);
 
 export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 	const bearer = useInject(INJECTION_TOKENS.instances.authentication_token) || "";
@@ -69,6 +69,8 @@ export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 					GjsTypedPlugin,
 				],
 				pluginsOpts: {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
 					[GjsTypedPlugin]: {
 						block: {
 							label: makeBlockLabel("Animated text", "keyframes"),
