@@ -17,7 +17,7 @@ async function getData(): Promise<TemplateRenderingEntity> {
 	return await response.json();
 }
 
-export default async function Page(): Promise<JSX.Element> {
+export default async function Page() {
 	const data = await getData();
 
 	const extracted_body_id = /<body\s*[^>]+id=(\w+)\s*[^>]*>/gm.exec(data.html);
