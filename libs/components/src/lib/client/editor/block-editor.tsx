@@ -3,7 +3,8 @@
 import { BlockEditorProps, INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
 import { BaseBlocksPlugin, makeBlockLabel } from "@aetheria/gjs-base-blocks";
 import { UiPlugin } from "@aetheria/gjs-ui";
-import { useInject } from "@aetheria/hooks";
+import { useInject, useTemplates } from "@aetheria/hooks";
+import axios from "axios";
 import grapesjs, { Editor, ProjectData } from "grapesjs";
 import GjsStyleBgPlugin from "grapesjs-style-bg";
 import GjsStyleGradientPlugin from "grapesjs-style-gradient";
@@ -23,7 +24,7 @@ import { Menu } from "./menu";
  * @description Debounced auto-save function for 5 seconds
  * @type {DebouncedFunc<(editor: Editor) => Promise<void>>} debounced function
  */
-const debounced_autosave = debounce(async (editor: Editor) => {
+const debounced_autosave = debounce(async (editor: Editor, template_name: string, bearer: string) => {
 	const btn: HTMLElement | null = document.querySelector("#saving-btn");
 	if (btn) {
 		btn.style.display = "flex";
@@ -33,6 +34,19 @@ const debounced_autosave = debounce(async (editor: Editor) => {
 	await new Promise((resolve) => setTimeout(resolve, 1000));
 
 	await editor.store({});
+
+	// revalidate the template
+	await axios.post(
+		`/api/revalidate`,
+		{
+			tag: template_name.replace(/\//g, "%2F"),
+		},
+		{
+			headers: {
+				Authorization: `Bearer ${bearer}`,
+			},
+		},
+	);
 
 	// sleep for one second to show the saving button
 	await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -46,6 +60,29 @@ export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 	const bearer = useInject(INJECTION_TOKENS.instances.authentication_token) || "";
 
 	const [editor, set_editor] = useState<Editor | null>(null);
+	const [template_name, set_template_name] = useState<string | null>(null);
+
+	const { data: template_data } = useTemplates(id).query.get;
+
+	useEffect(() => {
+		set_template_name((prevState) => {
+			const new_template_name = template_data?.data.name || prevState || null;
+
+			if (editor) {
+				const old_update_event = () => {
+					debounced_autosave(editor, prevState || "", bearer);
+				};
+				const update_event = () => {
+					debounced_autosave(editor, new_template_name || "", bearer);
+				};
+
+				editor.off("update", old_update_event);
+				editor.on("update", update_event);
+			}
+
+			return new_template_name;
+		});
+	}, [bearer, editor, template_data]);
 
 	useEffect(() => {
 		if (!editor) {
@@ -149,13 +186,9 @@ export const BlockEditor: FC<BlockEditorProps> = ({ id }) => {
 				},
 			});
 
-			g_editor.on("update", () => {
-				debounced_autosave(g_editor);
-			});
-
 			set_editor(g_editor);
 		}
-	}, [bearer, editor, id]);
+	}, [bearer, editor, id, template_name]);
 
 	return (
 		<div className={"editor"}>

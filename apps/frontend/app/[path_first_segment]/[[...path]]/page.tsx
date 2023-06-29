@@ -1,10 +1,6 @@
-"use client";
-
-import { INJECTION_TOKENS, TemplateRenderingEntity } from "@aetheria/frontend-interfaces";
-import { useInject } from "@aetheria/hooks";
+import { TemplateRenderingEntity } from "@aetheria/frontend-interfaces";
 import { CONFIG } from "@frontend/config";
 import Script from "next/script";
-import { FC, Suspense, useEffect, useMemo, useState } from "react";
 
 interface Params {
 	path?: string[];
@@ -16,7 +12,11 @@ interface Props {
 }
 
 async function getData(path: string): Promise<TemplateRenderingEntity> {
-	const response = await fetch(`${CONFIG.backend_url}/template/render/${path}`);
+	const response = await fetch(`${CONFIG.backend_url}/template/render/${path}`, {
+		next: {
+			tags: ["template", path],
+		},
+	});
 
 	if (!response.ok) {
 		throw new Error(response.statusText);
@@ -58,64 +58,36 @@ async function getData(path: string): Promise<TemplateRenderingEntity> {
  * @param params
  * @constructor
  */
-export default function Page({params}: Props): JSX.Element {
+export default async function Page({params}: Props) {
 	const {
 		path,
 		path_first_segment,
 	} = params;
 
-	const {FullPage} = useInject<{ FullPage: FC }>(INJECTION_TOKENS.components.loaders);
+	const navigation_path = path ? [
+		path_first_segment,
+		...path,
+	].join("%2F") : path_first_segment;
 
-	// Join the path segments together with an url encoded slash
-	const navigation_path = useMemo(
-		() => {
-			if (path) {
-				return [
-					path_first_segment,
-					...path,
-				].join("%2F");
-			}
+	const data = await getData(navigation_path);
 
-			return [ path_first_segment ].join("%2F");
-		},
-		[
-			path,
-			path_first_segment,
-		],
-	);
-
-	const [ data, set_data ] = useState<TemplateRenderingEntity | null>(null);
-	const [ body_id, set_body_id ] = useState<string | undefined>(undefined);
-
-	useEffect(() => {
-		getData(navigation_path).then((value) => {
-			set_data(value);
-
-			const extracted_body_id = /<body\s*[^>]+id=(\w+)\s*[^>]*>/gm.exec(value.html);
-			set_body_id(extracted_body_id && extracted_body_id.length === 1 ? extracted_body_id[0] : undefined);
-		});
-	}, [ navigation_path ]);
+	const extracted_body_id = /<body\s*[^>]+id=(\w+)\s*[^>]*>/gm.exec(data.html);
+	const body_id = extracted_body_id && extracted_body_id.length === 1 ? extracted_body_id[0] : undefined;
 
 	return (
 		<>
-			<Suspense fallback={<FullPage />}>
-				{data && (
-					<>
-						<style>{data.css}</style>
-						<main
-							id={body_id}
-							dangerouslySetInnerHTML={{__html: data.html}}
-						></main>
-						{data.scripts && (
-							<Script
-								id={"home_script"}
-								strategy="afterInteractive"
-								dangerouslySetInnerHTML={{ __html: data.scripts }}
-							/>
-						)}
-					</>
-				)}
-			</Suspense>
+			<style>{data.css}</style>
+			<main
+				id={body_id}
+				dangerouslySetInnerHTML={{__html: data.html}}
+			></main>
+			{data.scripts && (
+				<Script
+					id={"home_script"}
+					strategy="afterInteractive"
+					dangerouslySetInnerHTML={{__html: data.scripts}}
+				/>
+			)}
 		</>
 	);
 }
