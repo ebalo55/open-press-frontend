@@ -3,9 +3,9 @@ import { makeBlockLabel } from "./label-factory";
 
 export const ScriptBlock = (editor: Editor) => {
 	editor.Blocks.add("script", {
-		label:    makeBlockLabel("Script", "code-plus"),
+		label: makeBlockLabel("Script", "code-plus"),
 		category: "Basic",
-		content:  {
+		content: {
 			type: "script-custom",
 		},
 	});

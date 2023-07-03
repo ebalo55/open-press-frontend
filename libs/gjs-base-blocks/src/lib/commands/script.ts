@@ -18,7 +18,7 @@ console.log("This is a custom script running from the editor");
 
 const openModal = (component: Component) => {
 	component.em.Modal.open({
-		title:   "Script content definition",
+		title: "Script content definition",
 		content: `
 				<div id="editor-container" class="min-w-full min-h-20"></div>
 				<div class="flex items-center my-2">

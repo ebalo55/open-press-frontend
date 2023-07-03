@@ -20,14 +20,8 @@ class ComponentUtility {
 	 * @returns {(component: Component, value: string, options: ComponentAttributeChangeHandlerOptions) => (undefined |
 	 *     void)} Wrapped callback function
 	 */
-	static rejectIdUpdatesMiddleware(
-		callback: ComponentAttributeChangeHandler,
-	) {
-		return (
-			component: Component,
-			value: string,
-			options: ComponentAttributeChangeHandlerOptions,
-		) => {
+	static rejectIdUpdatesMiddleware(callback: ComponentAttributeChangeHandler) {
+		return (component: Component, value: string, options: ComponentAttributeChangeHandlerOptions) => {
 			// Reject `idUpdate` events
 			if (options.idUpdate) {
 				return;
@@ -53,7 +47,7 @@ class ComponentUtility {
 			if (handler_name in component) {
 				component.on(
 					`change:attributes:${attribute}`,
-					ComponentUtility.rejectIdUpdatesMiddleware((component as any)[handler_name]),
+					ComponentUtility.rejectIdUpdatesMiddleware((component as any)[handler_name])
 				);
 			}
 		}
@@ -79,20 +73,10 @@ class ComponentUtility {
 						noClass: false,
 						noStyle: false,
 					})[attribute],
-					{ init: true },
+					{ init: true }
 				);
 			}
 		}
-	}
-
-	/**
-	 * Make a string a valid pascal case attribute
-	 * @param {string} attribute Attribute to make pascal case
-	 * @returns {string} Pascal case attribute
-	 * @private
-	 */
-	private static makePascalCaseAttribute(attribute: string) {
-		return words(attribute).map(capitalize).join("");
 	}
 
 	/**
@@ -100,10 +84,7 @@ class ComponentUtility {
 	 * @param {Component} component Component to reset attributes on
 	 * @param {GenericObject} override Attributes to override
 	 */
-	static resetAttributes(
-		component: Component,
-		override: GenericObject,
-	) {
+	static resetAttributes(component: Component, override: GenericObject) {
 		component.setAttributes(
 			{
 				...component.getAttributes({
@@ -112,7 +93,7 @@ class ComponentUtility {
 				}),
 				...override,
 			},
-			{ stop_propagation: true } as any,
+			{ stop_propagation: true } as any
 		);
 	}
 
@@ -127,7 +108,7 @@ class ComponentUtility {
 		component: Component,
 		should_add_trait: boolean,
 		trait: TraitProperties,
-		options: ComponentAttributeChangeHandlerOptions,
+		options: ComponentAttributeChangeHandlerOptions
 	) {
 		const should_reset = !options.stop_propagation && !options.init;
 
@@ -135,8 +116,7 @@ class ComponentUtility {
 			if (!component.getTrait(trait.name)) {
 				component.addTrait(trait);
 			}
-		}
-		else if (component.getTrait(trait.name) && should_reset) {
+		} else if (component.getTrait(trait.name) && should_reset) {
 			ComponentUtility.resetAttributes(component, {
 				[trait.name]: null,
 			});
@@ -155,11 +135,21 @@ class ComponentUtility {
 		component: Component,
 		should_add_trait: boolean,
 		traits: TraitProperties[],
-		options: ComponentAttributeChangeHandlerOptions,
+		options: ComponentAttributeChangeHandlerOptions
 	) {
 		traits.forEach((trait) => {
 			ComponentUtility.addTraitOrReset(component, should_add_trait, trait, options);
 		});
+	}
+
+	/**
+	 * Make a string a valid pascal case attribute
+	 * @param {string} attribute Attribute to make pascal case
+	 * @returns {string} Pascal case attribute
+	 * @private
+	 */
+	private static makePascalCaseAttribute(attribute: string) {
+		return words(attribute).map(capitalize).join("");
 	}
 }
 

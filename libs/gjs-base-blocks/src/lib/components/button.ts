@@ -3,12 +3,7 @@ import classNames from "classnames";
 import { Editor } from "grapesjs";
 
 type ButtonTypes = "button" | "reset" | "submit";
-const button_types: ButtonTypes[] = [
-	"button",
-	"reset",
-	"submit",
-];
-
+const button_types: ButtonTypes[] = ["button", "reset", "submit"];
 
 export const ButtonComponent = (editor: Editor) => {
 	editor.Components.addType("button", {

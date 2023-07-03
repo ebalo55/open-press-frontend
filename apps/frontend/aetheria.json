@@ -2,15 +2,15 @@
     "plugins": [
         {
             "id": "@aetheria/frontend-utility",
-            "resolve": "../../../libs/frontend-utility"
+            "resolve": "../../libs/frontend-utility"
         },
         {
             "id": "@aetheria/hooks",
-            "resolve": "../../../libs/hooks"
+            "resolve": "../../libs/hooks"
         },
         {
             "id": "@aetheria/components",
-            "resolve": "../../../libs/components"
+            "resolve": "../../libs/components"
         }
     ]
 }

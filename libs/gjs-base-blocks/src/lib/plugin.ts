@@ -1,15 +1,5 @@
 import { Editor } from "grapesjs";
 import {
-	ButtonComponent,
-	ColumnsComponent,
-	FormComponent,
-	GridComponent,
-	HeaderComponent,
-	InputComponent,
-	ParagraphComponent,
-	ScriptComponent,
-} from "./components";
-import {
 	ButtonBlock,
 	ColumnsBlock,
 	ContainerBlock,
@@ -23,13 +13,23 @@ import {
 	StylesheetBlock,
 	TextBlock,
 } from "./blocks";
-import { ContainerComponent } from "./components/container";
 import {
 	OPEN_SCRIPT_EDITOR_MODAL,
 	OPEN_STYLESHEET_EDITOR_MODAL,
 	openScriptEditorModal,
 	openStylesheetEditorModal,
 } from "./commands";
+import {
+	ButtonComponent,
+	ColumnsComponent,
+	FormComponent,
+	GridComponent,
+	HeaderComponent,
+	InputComponent,
+	ParagraphComponent,
+	ScriptComponent,
+} from "./components";
+import { ContainerComponent } from "./components/container";
 import { StyleComponent } from "./components/style";
 
 export const BaseBlocksPlugin = (editor: Editor) => {

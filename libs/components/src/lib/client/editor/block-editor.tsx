@@ -45,7 +45,7 @@ const debounced_autosave = debounce(async (editor: Editor, template_name: string
 			headers: {
 				Authorization: `Bearer ${bearer}`,
 			},
-		},
+		}
 	);
 
 	// sleep for one second to show the saving button

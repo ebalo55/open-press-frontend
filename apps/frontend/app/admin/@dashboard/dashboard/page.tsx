@@ -5,6 +5,6 @@ export const metadata: Metadata = {
 	title: "Dashboard",
 };
 
-export default function Dashboard(): JSX.Element {
+export default function Dashboard() {
 	return <DashboardBase />;
 }

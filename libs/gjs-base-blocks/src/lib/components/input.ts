@@ -42,7 +42,6 @@ const input_types: InputTypes[] = [
 	"hidden",
 ];
 
-
 export const InputComponent = (editor: Editor) => {
 	editor.Components.addType("input", {
 		// Make the editor understand when to bind `my-input-type`
@@ -52,26 +51,27 @@ export const InputComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "input",
-				draggable:  "form, form *", // Can be dropped only inside `form` elements
-				droppable:  false, // Can't drop other elements inside
-				attributes: { // Default attributes
-					type:        "text",
-					name:        "default-name",
+				tagName: "input",
+				draggable: "form, form *", // Can be dropped only inside `form` elements
+				droppable: false, // Can't drop other elements inside
+				attributes: {
+					// Default attributes
+					type: "text",
+					name: "default-name",
 					placeholder: "Insert text here",
 				},
 				traits: [
 					{
-						type:  TRAIT_SECTION_HEADER,
+						type: TRAIT_SECTION_HEADER,
 						label: "General settings",
 					},
 					{
-						type:    "select",
-						name:    "type",
+						type: "select",
+						name: "type",
 						default: "text",
-						text:    "text",
+						text: "text",
 						options: input_types.map((type) => ({
-							name:  type,
+							name: type,
 							value: type,
 						})),
 					},
@@ -79,8 +79,8 @@ export const InputComponent = (editor: Editor) => {
 					"id",
 					"name",
 					{
-						type:  "checkbox",
-						name:  "readonly",
+						type: "checkbox",
+						name: "readonly",
 						label: "Read only",
 					},
 					{
@@ -92,31 +92,31 @@ export const InputComponent = (editor: Editor) => {
 						name: "required",
 					},
 					{
-						type:  "number",
-						name:  "maxlength",
-						min:   0,
-						step:  1,
+						type: "number",
+						name: "maxlength",
+						min: 0,
+						step: 1,
 						label: "Max length",
 					},
 					{
-						type:  "checkbox",
-						name:  "autofocus",
+						type: "checkbox",
+						name: "autofocus",
 						label: "Auto focus",
 					},
 					{
-						type:  "checkbox",
-						name:  "autocomplete",
+						type: "checkbox",
+						name: "autocomplete",
 						label: "Auto complete",
 					},
 
 					{
-						type:    TRAIT_HORIZONTAL_SEPARATOR,
+						type: TRAIT_HORIZONTAL_SEPARATOR,
 						default: {
-							         additional_classes: "mt-4 -mb-2",
-						         } as TraitHorizontalSeparatorExtraSettings,
+							additional_classes: "mt-4 -mb-2",
+						} as TraitHorizontalSeparatorExtraSettings,
 					},
 					{
-						type:  TRAIT_SECTION_HEADER,
+						type: TRAIT_SECTION_HEADER,
 						label: "Type specific settings",
 					},
 				],
@@ -130,33 +130,23 @@ export const InputComponent = (editor: Editor) => {
 			handleTypeAttributeChange(
 				component: Component,
 				value: InputTypes,
-				options: ComponentAttributeChangeHandlerOptions,
+				options: ComponentAttributeChangeHandlerOptions
 			) {
 				GrapesJsUtility.component.addTraitOrReset(
 					this,
-					([
-						"text",
-						"search",
-						"tel",
-						"url",
-						"email",
-						"password",
-					] as InputTypes[]).includes(value),
+					(["text", "search", "tel", "url", "email", "password"] as InputTypes[]).includes(value),
 					{
 						type: "number",
 						name: "size",
-						min:  0,
+						min: 0,
 						step: 1,
 					},
-					options,
+					options
 				);
 
 				GrapesJsUtility.component.addTraitsOrReset(
 					this,
-					([
-						"number",
-						"range",
-					] as InputTypes[]).includes(value),
+					(["number", "range"] as InputTypes[]).includes(value),
 					[
 						{
 							type: "number",
@@ -169,18 +159,12 @@ export const InputComponent = (editor: Editor) => {
 							step: 1,
 						},
 					],
-					options,
+					options
 				);
 
 				GrapesJsUtility.component.addTraitsOrReset(
 					this,
-					([
-						"date",
-						"datetime-local",
-						"month",
-						"week",
-						"time",
-					] as InputTypes[]).includes(value),
+					(["date", "datetime-local", "month", "week", "time"] as InputTypes[]).includes(value),
 					[
 						{
 							type: "text",
@@ -191,74 +175,50 @@ export const InputComponent = (editor: Editor) => {
 							name: "max",
 						},
 					],
-					options,
+					options
 				);
 
 				GrapesJsUtility.component.addTraitOrReset(
 					this,
-					([
-						"file",
-						"email",
-					] as InputTypes[]).includes(value),
+					(["file", "email"] as InputTypes[]).includes(value),
 					{
 						type: "checkbox",
 						name: "multiple",
 					},
-					options,
+					options
 				);
 
 				GrapesJsUtility.component.addTraitOrReset(
 					this,
-					([
-						"text",
-						"date",
-						"search",
-						"tel",
-						"url",
-						"email",
-						"password",
-					] as InputTypes[]).includes(value),
+					(["text", "date", "search", "tel", "url", "email", "password"] as InputTypes[]).includes(value),
 					{
 						type: "text",
 						name: "pattern",
 					},
-					options,
+					options
 				);
 
 				GrapesJsUtility.component.addTraitOrReset(
 					this,
-					([
-						"text",
-						"search",
-						"tel",
-						"url",
-						"email",
-						"password",
-					] as InputTypes[]).includes(value),
+					(["text", "search", "tel", "url", "email", "password"] as InputTypes[]).includes(value),
 					{
 						type: "text",
 						name: "placeholder",
 					},
-					options,
+					options
 				);
 
 				GrapesJsUtility.component.addTraitOrReset(
 					this,
-					([
-						"number",
-						"range",
-						"date",
-						"datetime-local",
-						"month",
-						"time",
-						"week",
-					] as InputTypes[]).includes(value),
+					(["number", "range", "date", "datetime-local", "month", "time", "week"] as InputTypes[]).includes(
+						value
+					),
 					{
 						type: "number",
 						name: "step",
-						min:  0,
+						min: 0,
 					},
-					options,
+					options
 				);
 			},
 		},

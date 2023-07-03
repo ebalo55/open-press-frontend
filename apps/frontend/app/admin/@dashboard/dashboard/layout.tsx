@@ -5,7 +5,7 @@ import { useSafeInject } from "@aetheria/hooks";
 import { AppShell } from "@mantine/core";
 import { FC } from "react";
 
-export default function Layout({ children }: ReactChildren): JSX.Element {
+export default function Layout({ children }: ReactChildren) {
 	const Navbar = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.navbar);
 	const Footer = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.footer);
 	const Header = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.header);

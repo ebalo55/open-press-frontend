@@ -2,8 +2,8 @@
 
 /* istanbul ignore file */
 
-import { useScrollPosition } from "./use-scroll-position";
 import { useEffect } from "react";
+import { useScrollPosition } from "./use-scroll-position";
 
 export const useTranslateElementOnScroll = (query_selector: string) => {
 	const scroll_position = useScrollPosition();

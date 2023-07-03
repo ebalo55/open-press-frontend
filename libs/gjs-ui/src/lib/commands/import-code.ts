@@ -27,7 +27,7 @@ You can include also <style> tags that will be parsed as global css definition.
 
 const openModal = (editor: Editor) => {
 	editor.Modal.open({
-		title:   "Import code",
+		title: "Import code",
 		content: `
 				<div id="editor-container" class="min-w-full min-h-20"></div>
 				<div class="flex items-center my-2">
@@ -49,24 +49,23 @@ const hookNextModalOpening = (editor: Editor) => {
 			parent: document.getElementById("editor-container")!,
 
 			state: EditorState.create({
-				doc:        SCRIPT_TEMPLATE,
+				doc: SCRIPT_TEMPLATE,
 				extensions: [
 					basicSetup,
 					darcula,
 					html({
-						autoCloseTags:    true,
+						autoCloseTags: true,
 						matchClosingTags: true,
-						selfClosingTags:  true,
+						selfClosingTags: true,
 					}),
 				],
 			}),
 		});
 
-		document.getElementById("save-script")
-		        ?.addEventListener("click", () => {
-			        editor.setComponents(codemirror_editor.state.doc.toString());
-			        editor.Modal.close();
-		        });
+		document.getElementById("save-script")?.addEventListener("click", () => {
+			editor.setComponents(codemirror_editor.state.doc.toString());
+			editor.Modal.close();
+		});
 	});
 };
 

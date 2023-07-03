@@ -1,5 +1,5 @@
-import { DeviceName } from "../devices";
 import { CommandObject } from "grapesjs";
+import { DeviceName } from "../devices";
 
 export const makeSetDeviceCommand = (device: DeviceName): CommandObject => {
 	return {

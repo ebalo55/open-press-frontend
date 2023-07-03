@@ -1,7 +1,7 @@
 import { AdminBase } from "@aetheria/components";
 import { AdminBaseComponentProperties } from "@aetheria/frontend-interfaces";
 
-export default function Layout({ dashboard, login }: AdminBaseComponentProperties): JSX.Element {
+export default function Layout({ dashboard, login }: AdminBaseComponentProperties) {
 	return (
 		<AdminBase
 			dashboard={dashboard}

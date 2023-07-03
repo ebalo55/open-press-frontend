@@ -6,13 +6,6 @@
  * @param {Type} new_value The new value
  * @returns {Type[]} The updated array
  */
-export const updateValueAtIndex = <Type>(
-	array: Type[],
-	index: number,
-	new_value: Type,
-): Type[] => {
-	return array.map((
-		v,
-		i,
-	) => i === index ? new_value : v);
+export const updateValueAtIndex = <Type>(array: Type[], index: number, new_value: Type): Type[] => {
+	return array.map((v, i) => (i === index ? new_value : v));
 };

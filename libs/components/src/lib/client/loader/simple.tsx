@@ -1,12 +1,15 @@
 "use client";
 
-import {Center, Loader, LoaderProps} from "@mantine/core";
-import {FC} from "react";
+import { Center, Loader, LoaderProps } from "@mantine/core";
+import { FC } from "react";
 
 export const Simple: FC<LoaderProps> = (props) => {
-    return (
-        <Center>
-            <Loader variant={"bars"} {...props}/>
-        </Center>
-    );
+	return (
+		<Center>
+			<Loader
+				variant={"bars"}
+				{...props}
+			/>
+		</Center>
+	);
 };

@@ -4,7 +4,7 @@ import { useInject, useSafeInject } from "@aetheria/hooks";
 import { useRouter } from "next/navigation";
 import { FC, Suspense, useEffect } from "react";
 
-export default function Loading(): JSX.Element {
+export default function Loading() {
 	const router = useRouter();
 
 	const Loaders = useInject<{ FullPage: FC }>(INJECTION_TOKENS.components.loaders);

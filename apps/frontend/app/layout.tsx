@@ -10,10 +10,10 @@ import { Providers } from "./providers";
 
 export const metadata: Metadata = {
 	title: `Welcome to ${CONFIG.app_name}`,
-	description: "Generated with ❤️ by Open Press",
+	description: "Created by Override",
 };
 
-export default function RootLayout({ children }: ReactChildren): JSX.Element {
+export default function RootLayout({ children }: ReactChildren) {
 	return (
 		<html lang="en">
 			<body

@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-	title: "Welcome to Home",
+	title: "Welcome Home",
 };
 
 async function getData(): Promise<TemplateRenderingEntity> {

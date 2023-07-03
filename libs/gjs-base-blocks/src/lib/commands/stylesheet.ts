@@ -21,7 +21,7 @@ const STYLESHEET_TEMPLATE = `.insert-your-selector {
 
 const openModal = (component: Component) => {
 	component.em.Modal.open({
-		title:   "Stylesheet content definition",
+		title: "Stylesheet content definition",
 		content: `
 				<div id="editor-container" class="min-w-full min-h-20"></div>
 				<div class="flex items-center my-2">

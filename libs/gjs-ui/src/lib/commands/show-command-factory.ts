@@ -9,8 +9,7 @@ type ShowCommandType = CommandObject & {
 export const makeShowCommand = (element_selector: string): CommandObject => {
 	return {
 		getEditorRow(editor: Editor): HTMLElement {
-			const row: NullableHTMLElement = editor.getContainer()
-			                                       ?.closest(".editor-row") || null;
+			const row: NullableHTMLElement = editor.getContainer()?.closest(".editor-row") || null;
 
 			if (!row) {
 				throw new Error("Could not find editor row");
@@ -19,10 +18,7 @@ export const makeShowCommand = (element_selector: string): CommandObject => {
 			return row;
 		},
 
-		getElement(
-			this: ShowCommandType,
-			editor: Editor,
-		): HTMLElement {
+		getElement(this: ShowCommandType, editor: Editor): HTMLElement {
 			const row = this.getEditorRow(editor);
 			const element: NullableHTMLElement = row.querySelector(element_selector);
 
@@ -33,20 +29,12 @@ export const makeShowCommand = (element_selector: string): CommandObject => {
 			return element;
 		},
 
-		run(
-			this: ShowCommandType,
-			editor,
-			sender,
-		) {
+		run(this: ShowCommandType, editor, sender) {
 			const element = this.getElement(editor);
 			element.style.display = "";
 		},
 
-		stop(
-			this: ShowCommandType,
-			editor,
-			sender,
-		) {
+		stop(this: ShowCommandType, editor, sender) {
 			const element = this.getElement(editor);
 			element.style.display = "none";
 		},

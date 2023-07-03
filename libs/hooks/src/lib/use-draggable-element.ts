@@ -5,15 +5,11 @@
 import { getCurrentEventSelector, getElementOffset, updateValueAtIndex } from "@aetheria/frontend-utility";
 import { DragEvent, useCallback, useEffect, useState } from "react";
 
-export const useDraggableElement = (
-	header_query_selector: string,
-	move_parent: boolean,
-	use_style = true,
-) => {
+export const useDraggableElement = (header_query_selector: string, move_parent: boolean, use_style = true) => {
 	const [pos1, set_pos1] = useState<number[]>([]),
-	      [pos2, set_pos2] = useState<number[]>([]),
-	      [pos3, set_pos3] = useState<number[]>([]),
-	      [pos4, set_pos4] = useState<number[]>([]);
+		[pos2, set_pos2] = useState<number[]>([]),
+		[pos3, set_pos3] = useState<number[]>([]),
+		[pos4, set_pos4] = useState<number[]>([]);
 
 	const [elements, set_elements] = useState<HTMLElement[]>();
 
@@ -78,71 +74,52 @@ export const useDraggableElement = (
 				current_element.style.left = `${offset_left - pos1[index]}px`;
 			}
 		},
-		[
-			elements,
-			header_query_selector,
-			move_parent,
-			pos1,
-			pos2,
-			pos3,
-			pos4,
-			use_style,
-		],
+		[elements, header_query_selector, move_parent, pos1, pos2, pos3, pos4, use_style]
 	);
 
-	useEffect(
-		() => {
-			const elements_local = Array.from(document.querySelectorAll(header_query_selector)) as HTMLElement[];
+	useEffect(() => {
+		const elements_local = Array.from(document.querySelectorAll(header_query_selector)) as HTMLElement[];
 
-			set_elements(elements_local);
-			set_pos1(Array.from({ length: elements_local.length }, () => 0));
-			set_pos2(Array.from({ length: elements_local.length }, () => 0));
-			set_pos3(Array.from({ length: elements_local.length }, () => 0));
-			set_pos4(Array.from({ length: elements_local.length }, () => 0));
+		set_elements(elements_local);
+		set_pos1(Array.from({ length: elements_local.length }, () => 0));
+		set_pos2(Array.from({ length: elements_local.length }, () => 0));
+		set_pos3(Array.from({ length: elements_local.length }, () => 0));
+		set_pos4(Array.from({ length: elements_local.length }, () => 0));
 
-			const dragMouseDown = makeDragMouseDown(elements_local);
+		const dragMouseDown = makeDragMouseDown(elements_local);
 
-			elements_local.forEach((element) => {
-				if (element) {
-					element.addEventListener("mousedown", dragMouseDown);
+		elements_local.forEach((element) => {
+			if (element) {
+				element.addEventListener("mousedown", dragMouseDown);
+			}
+		});
+
+		return () => {
+			elements_local.forEach((elem) => {
+				if (elem) {
+					elem.removeEventListener("mousedown", dragMouseDown);
+				}
+			});
+		};
+	}, [header_query_selector]);
+
+	useEffect(() => {
+		if (elements) {
+			elements.forEach((element) => {
+				if (is_mouse_down && element) {
+					document.addEventListener("mouseup", closeDragElement);
+					document.addEventListener("mousemove", elementDrag);
 				}
 			});
 
 			return () => {
-				elements_local.forEach((elem) => {
-					if (elem) {
-						elem.removeEventListener("mousedown", dragMouseDown);
+				elements.forEach((element) => {
+					if (is_mouse_down && element) {
+						document.removeEventListener("mouseup", closeDragElement);
+						document.removeEventListener("mousemove", elementDrag);
 					}
 				});
 			};
-		},
-		[header_query_selector],
-	);
-
-	useEffect(
-		() => {
-			if (elements) {
-				elements.forEach((element) => {
-					if (is_mouse_down && element) {
-						document.addEventListener("mouseup", closeDragElement);
-						document.addEventListener("mousemove", elementDrag);
-					}
-				});
-
-				return () => {
-					elements.forEach((element) => {
-						if (is_mouse_down && element) {
-							document.removeEventListener("mouseup", closeDragElement);
-							document.removeEventListener("mousemove", elementDrag);
-						}
-					});
-				};
-			}
-		},
-		[
-			elementDrag,
-			elements,
-			is_mouse_down,
-		],
-	);
+		}
+	}, [elementDrag, elements, is_mouse_down]);
 };

@@ -58,16 +58,10 @@ async function getData(path: string): Promise<TemplateRenderingEntity> {
  * @param params
  * @constructor
  */
-export default async function Page({params}: Props) {
-	const {
-		path,
-		path_first_segment,
-	} = params;
+export default async function Page({ params }: Props) {
+	const { path, path_first_segment } = params;
 
-	const navigation_path = path ? [
-		path_first_segment,
-		...path,
-	].join("%2F") : path_first_segment;
+	const navigation_path = path ? [path_first_segment, ...path].join("%2F") : path_first_segment;
 
 	const data = await getData(navigation_path);
 
@@ -79,13 +73,13 @@ export default async function Page({params}: Props) {
 			<style>{data.css}</style>
 			<main
 				id={body_id}
-				dangerouslySetInnerHTML={{__html: data.html}}
+				dangerouslySetInnerHTML={{ __html: data.html }}
 			></main>
 			{data.scripts && (
 				<Script
 					id={"home_script"}
 					strategy="afterInteractive"
-					dangerouslySetInnerHTML={{__html: data.scripts}}
+					dangerouslySetInnerHTML={{ __html: data.scripts }}
 				/>
 			)}
 		</>
