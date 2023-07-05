@@ -1,7 +1,7 @@
 {
 	"name": "@aetheria/frontend-common",
 	"version": "1.0.0",
-	"description": "Aetheria frontend common utilities, components and methods",
+	"description": "Aetheria frontend common utilities, components, hooks and methods",
 	"author": {
 		"name": "Override",
 		"email": "hello@override.sh",
