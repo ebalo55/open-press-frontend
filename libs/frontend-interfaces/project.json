@@ -1,5 +1,5 @@
 {
-	"name": "aetheria-interfaces",
+	"name": "frontend-interfaces",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"sourceRoot": "libs/aetheria-interfaces/src",
 	"projectType": "library",
@@ -31,7 +31,7 @@
 					"react/jsx-runtime"
 				],
 				"rollupConfig": "@nx/react/plugins/bundle-rollup",
-				"compiler": "swc",
+				"compiler": "tsc",
 				"assets": [
 					{
 						"glob": "libs/frontend-interfaces/README.md",

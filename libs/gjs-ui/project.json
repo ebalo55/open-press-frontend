@@ -47,7 +47,7 @@
 					"react/jsx-runtime"
 				],
 				"rollupConfig": "@nx/react/plugins/bundle-rollup",
-				"compiler": "swc",
+				"compiler": "tsc",
 				"assets": [
 					{
 						"glob": "libs/gjs-ui/README.md",
