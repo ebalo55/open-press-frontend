@@ -10,7 +10,7 @@
     "@codemirror/lang-javascript": "^6.1.9",
     "@nx/next": "16.3.2",
     "@tabler/icons-react": "^2.23.0",
-    "@tabler/icons-webfont": "^2.22.0",
+    "@tabler/icons-webfont": "^2.23.0",
     "@uiw/codemirror-theme-darcula": "^4.21.5",
     "classnames": "^2.3.2",
     "codemirror": "^6.0.1",
