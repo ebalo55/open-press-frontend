@@ -1,7 +1,7 @@
 {
-	"name": "open-press-interfaces",
+	"name": "aetheria-interfaces",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
-	"sourceRoot": "libs/open-press-interfaces/src",
+	"sourceRoot": "libs/aetheria-interfaces/src",
 	"projectType": "library",
 	"targets": {
 		"lint": {
@@ -11,7 +11,33 @@
 			],
 			"options": {
 				"lintFilePatterns": [
-					"libs/open-press-interfaces/**/*.ts"
+					"libs/aetheria-interfaces/**/*.ts"
+				]
+			}
+		},
+		"build": {
+			"executor": "@nx/rollup:rollup",
+			"outputs": [
+				"{options.outputPath}"
+			],
+			"options": {
+				"outputPath": "dist/libs/frontend-interfaces",
+				"tsConfig": "libs/frontend-interfaces/tsconfig.lib.json",
+				"project": "libs/frontend-interfaces/package.json",
+				"entryFile": "libs/frontend-interfaces/src/index.ts",
+				"external": [
+					"react",
+					"react-dom",
+					"react/jsx-runtime"
+				],
+				"rollupConfig": "@nx/react/plugins/bundle-rollup",
+				"compiler": "swc",
+				"assets": [
+					{
+						"glob": "libs/frontend-interfaces/README.md",
+						"input": ".",
+						"output": "."
+					}
 				]
 			}
 		}

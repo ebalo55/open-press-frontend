@@ -6,8 +6,5 @@ export const DevicesPanel: Panel = {
 	el: ".panel__devices",
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	buttons: [
-		DeviceDesktopButton,
-		DeviceMobileButton,
-	],
+	buttons: [DeviceDesktopButton, DeviceMobileButton],
 };

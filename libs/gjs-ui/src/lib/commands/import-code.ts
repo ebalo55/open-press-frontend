@@ -1,9 +1,9 @@
-import { CommandObject, Editor } from "grapesjs";
-import { EditorView } from "@codemirror/view";
-import { EditorState } from "@codemirror/state";
-import { darcula } from "@uiw/codemirror-theme-darcula";
 import { html } from "@codemirror/lang-html";
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { darcula } from "@uiw/codemirror-theme-darcula";
 import { basicSetup } from "codemirror";
+import { CommandObject, Editor } from "grapesjs";
 
 const SCRIPT_TEMPLATE = `<!-- 
 Write the code you want to import here.
@@ -27,7 +27,7 @@ You can include also <style> tags that will be parsed as global css definition.
 
 const openModal = (editor: Editor) => {
 	editor.Modal.open({
-		title:   "Import code",
+		title: "Import code",
 		content: `
 				<div id="editor-container" class="min-w-full min-h-20"></div>
 				<div class="flex items-center my-2">
@@ -49,31 +49,28 @@ const hookNextModalOpening = (editor: Editor) => {
 			parent: document.getElementById("editor-container")!,
 
 			state: EditorState.create({
-				doc:        SCRIPT_TEMPLATE,
+				doc: SCRIPT_TEMPLATE,
 				extensions: [
 					basicSetup,
 					darcula,
 					html({
-						autoCloseTags:    true,
+						autoCloseTags: true,
 						matchClosingTags: true,
-						selfClosingTags:  true,
+						selfClosingTags: true,
 					}),
 				],
 			}),
 		});
 
-		document.getElementById("save-script")
-		        ?.addEventListener("click", () => {
-			        editor.setComponents(codemirror_editor.state.doc.toString());
-			        editor.Modal.close();
-		        });
+		document.getElementById("save-script")?.addEventListener("click", () => {
+			editor.setComponents(codemirror_editor.state.doc.toString());
+			editor.Modal.close();
+		});
 	});
 };
 
-export const openImportCodeModal: CommandObject = {
-	run: (
-		     editor,
-	     ) => {
+export const OpenImportCodeModal: CommandObject = {
+	run: (editor) => {
 		hookNextModalOpening(editor);
 		openModal(editor);
 	},

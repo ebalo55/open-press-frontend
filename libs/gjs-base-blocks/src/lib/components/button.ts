@@ -1,17 +1,9 @@
+import { TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
+import classNames from "classnames";
 import { Editor } from "grapesjs";
-import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
-import { explodeClasses } from "@open-press/utility";
 
-type ButtonTypes =
-	"button"
-	| "reset"
-	| "submit";
-const button_types: ButtonTypes[] = [
-	"button",
-	"reset",
-	"submit",
-];
-
+type ButtonTypes = "button" | "reset" | "submit";
+const button_types: ButtonTypes[] = ["button", "reset", "submit"];
 
 export const ButtonComponent = (editor: Editor) => {
 	editor.Components.addType("button", {
@@ -24,23 +16,24 @@ export const ButtonComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "button",
-				droppable:  false, // Can't drop other elements inside
-				attributes: { // Default attributes
+				tagName: "button",
+				droppable: false, // Can't drop other elements inside
+				attributes: {
+					// Default attributes
 					type: "button",
 				},
-				classes:    explodeClasses("border border-gray-300 bg-white px-3 py-2"),
-				traits:     [
+				classes: classNames("border border-gray-300 bg-white px-3 py-2"),
+				traits: [
 					{
-						type:  TRAIT_SECTION_HEADER,
+						type: TRAIT_SECTION_HEADER,
 						label: "General settings",
 					},
 					{
-						type:    "select",
-						name:    "type",
+						type: "select",
+						name: "type",
 						default: "button",
 						options: button_types.map((type) => ({
-							name:  type,
+							name: type,
 							value: type,
 						})),
 					},
@@ -48,8 +41,8 @@ export const ButtonComponent = (editor: Editor) => {
 					"id",
 					"name",
 					{
-						type:  "text",
-						name:  "form",
+						type: "text",
+						name: "form",
 						label: "Form ID",
 					},
 					{
@@ -57,18 +50,17 @@ export const ButtonComponent = (editor: Editor) => {
 						name: "disabled",
 					},
 					{
-						type:  "checkbox",
-						name:  "autofocus",
+						type: "checkbox",
+						name: "autofocus",
 						label: "Auto focus",
 					},
 				],
 				components: [
 					{
-						type:    "textnode",
+						type: "textnode",
 						content: "Click me, i'm a button!",
 					},
 				],
-
 			},
 		},
 	});

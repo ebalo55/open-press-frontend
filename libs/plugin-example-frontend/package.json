@@ -1,0 +1,44 @@
+{
+	"name": "@aetheria/plugin-example-frontend",
+	"version": "1.0.0",
+	"description": "Example frontend plugin for Aetheria CMS",
+	"author": {
+		"name": "Override",
+		"email": "hello@override.sh",
+		"url": "https://override.sh"
+	},
+	"homepage": "https://aetheria-docs.override.sh/plugins/example-frontend",
+	"bugs": {
+		"url": "https://github.com/override-sh/aetheria-frontend/issues"
+	},
+	"license": "GPL-2.0",
+	"publishConfig": {
+		"access": "public",
+		"tag": "latest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/override-sh/aetheria-frontend.git",
+		"directory": "libs/plugin-example-frontend"
+	},
+	"keywords": [
+		"override",
+		"aetheria",
+		"frontend",
+		"cms",
+		"example",
+		"es6",
+		"nextjs",
+		"next",
+		"cms"
+	],
+	"aetheria": {
+		"assets": [],
+		"reference_commit": "702c83b2c587b73aa0b4bd01bfd9277e90a655cf"
+	},
+	"dependencies": {
+		"@mantine/core": "^6.0.13",
+		"react": "18.2.0",
+		"tslib": "^2.5.3"
+	}
+}

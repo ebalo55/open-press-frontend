@@ -8,3 +8,5 @@ export * from "./set-device-desktop";
 export * from "./set-device-mobile";
 export * from "./set-device-factory";
 export * from "./import-code";
+export * from "./back-home";
+export * from "./menu";

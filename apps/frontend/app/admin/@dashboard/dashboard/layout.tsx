@@ -1,25 +1,24 @@
 "use client";
 
-import { ReactChildren } from "@open-press/interfaces";
-import { useState } from "react";
-import { DashboardWrapper } from "@open-press/components/server";
-import { useTranslateElementOnScroll } from "@open-press/hooks";
+import { useSafeInject } from "@aetheria/frontend-common";
+import { INJECTION_TOKENS, ReactChildren } from "@aetheria/frontend-interfaces";
+import { AppShell } from "@mantine/core";
+import { FC } from "react";
 
-export default function Layout(
-	{
-		children,
-	}: ReactChildren,
-): JSX.Element {
-	const [navExtended, setNavExtended] = useState(false);
-
-	useTranslateElementOnScroll("#left-pane-wrapper");
+export default function Layout({ children }: ReactChildren) {
+	const Navbar = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.navbar);
+	const Footer = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.footer);
+	const Header = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.header);
+	const Sidebar = useSafeInject<FC>(INJECTION_TOKENS.components.dashboard.sidebar);
 
 	return (
-		<DashboardWrapper
-			navExtended={navExtended}
-			setNavExtended={setNavExtended}
+		<AppShell
+			navbar={Navbar && <Navbar />}
+			footer={Footer && <Footer />}
+			header={Header && <Header />}
+			aside={Sidebar && <Sidebar />}
 		>
 			{children}
-		</DashboardWrapper>
+		</AppShell>
 	);
 }

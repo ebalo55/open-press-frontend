@@ -1,6 +1,7 @@
+import { GrapesJsUtility } from "@aetheria/frontend-common";
+import { TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
+import classNames from "classnames";
 import { Editor } from "grapesjs";
-import { explodeClasses, GrapesJsUtility } from "@open-press/utility";
-import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
 
 export const ColumnsComponent = (editor: Editor) => {
 	editor.Components.addType("columns", {
@@ -10,40 +11,32 @@ export const ColumnsComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "div",
-				classes:    explodeClasses("columns-component text-base p-4 relative flex flex-nowrap basis-full"),
-				droppable:  true,
+				tagName: "div",
+				classes: classNames("columns-component text-base p-4 relative flex flex-nowrap basis-full"),
+				droppable: true,
 				attributes: {
-					columns:   1,
+					columns: 1,
 					direction: "row",
 				},
-				traits:     [
+				traits: [
 					{
-						type:  TRAIT_SECTION_HEADER,
+						type: TRAIT_SECTION_HEADER,
 						label: "General settings",
 					},
 					{
 						type: "number",
 						name: "columns",
-						min:  1,
+						min: 1,
 						step: 1,
 					},
 					{
-						type:    "select",
-						name:    "direction",
+						type: "select",
+						name: "direction",
 						options: [
-							{ value:  "row",
-								name: "Row",
-							},
-							{ value:  "row-reverse",
-								name: "Row reverse",
-							},
-							{ value:  "column",
-								name: "Column",
-							},
-							{ value:  "column-reverse",
-								name: "Column reverse",
-							},
+							{ value: "row", name: "Row" },
+							{ value: "row-reverse", name: "Row reverse" },
+							{ value: "column", name: "Column" },
+							{ value: "column-reverse", name: "Column reverse" },
 						],
 					},
 				],
@@ -65,8 +58,9 @@ export const ColumnsComponent = (editor: Editor) => {
 				const direction = this.getAttributes()["direction"];
 				let classes: string[] = this.getClasses();
 
-				classes = classes.filter((className) => !(className.startsWith("flex-row") ||
-				                                          className.startsWith("flex-col")));
+				classes = classes.filter(
+					(className) => !(className.startsWith("flex-row") || className.startsWith("flex-col"))
+				);
 
 				switch (direction) {
 					case "row":
@@ -101,8 +95,7 @@ export const ColumnsComponent = (editor: Editor) => {
 							type: "container",
 						});
 					}
-				}
-				else if (columns < componentsCount) {
+				} else if (columns < componentsCount) {
 					for (let i = 0; i < componentsCount - columns; i++) {
 						components.pop();
 					}

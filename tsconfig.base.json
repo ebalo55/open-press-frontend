@@ -1,29 +1,45 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@open-press/components": ["libs/components/src/index.ts"],
-      "@open-press/components/server": ["libs/components/src/server.ts"],
-      "@open-press/gjs-base-blocks": ["libs/gjs-base-blocks/src/index.ts"],
-      "@open-press/gjs-ui": ["libs/gjs-ui/src/index.ts"],
-      "@open-press/hooks": ["libs/hooks/src/index.ts"],
-      "@open-press/interfaces": ["libs/frontend-interfaces/src/index.ts"],
-      "@open-press/utility": ["libs/utility/src/index.ts"],
-      "@open-press/utility/server": ["libs/utility/src/server.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "es2015",
+		"module": "esnext",
+		"lib": [
+			"es2020",
+			"dom"
+		],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@aetheria/frontend-common": [
+				"libs/common/src/index.ts"
+			],
+			"@aetheria/frontend-common/server": [
+				"libs/common/src/server.ts"
+			],
+			"@aetheria/frontend-interfaces": [
+				"libs/frontend-interfaces/src/index.ts"
+			],
+			"@aetheria/gjs-base-blocks": [
+				"libs/gjs-base-blocks/src/index.ts"
+			],
+			"@aetheria/gjs-ui": [
+				"libs/gjs-ui/src/index.ts"
+			],
+			"@aetheria/plugin-example-frontend": [
+				"libs/plugin-example-frontend/src/index.ts"
+			]
+		}
+	},
+	"exclude": [
+		"node_modules",
+		"tmp"
+	]
 }

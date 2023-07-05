@@ -1,6 +1,7 @@
+import { GrapesJsUtility } from "@aetheria/frontend-common";
+import { TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
+import classNames from "classnames";
 import { Editor } from "grapesjs";
-import { explodeClasses, GrapesJsUtility } from "@open-press/utility";
-import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
 
 export const GridComponent = (editor: Editor) => {
 	editor.Components.addType("grid", {
@@ -10,30 +11,30 @@ export const GridComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "div",
-				classes:    explodeClasses("grid-component text-base p-4 relative grid grid-cols-1 grid-rows-1"),
-				droppable:  true,
+				tagName: "div",
+				classes: classNames("grid-component text-base p-4 relative grid grid-cols-1 grid-rows-1"),
+				droppable: true,
 				attributes: {
 					columns: 1,
-					rows:    1,
+					rows: 1,
 				},
-				traits:     [
+				traits: [
 					{
-						type:  TRAIT_SECTION_HEADER,
+						type: TRAIT_SECTION_HEADER,
 						label: "General settings",
 					},
 					{
 						type: "number",
 						name: "columns",
-						min:  1,
-						max:  12,
+						min: 1,
+						max: 12,
 						step: 1,
 					},
 					{
 						type: "number",
 						name: "rows",
-						min:  1,
-						max:  6,
+						min: 1,
+						max: 6,
 						step: 1,
 					},
 				],

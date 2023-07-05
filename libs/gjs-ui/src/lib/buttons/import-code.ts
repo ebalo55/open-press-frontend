@@ -1,9 +1,9 @@
-import Button from "@grapesjs/panels/model/Button";
+import { Button } from "grapesjs";
 import { IMPORT_CODE } from "../commands";
 
 export const ImportCodeButton: Button = {
-	id:      "import-code",
-	active:  false,
-	label:   `<i class="ti ti-file-import"></i>`,
+	id: "import-code",
+	active: false,
+	label: `<i class="ti ti-file-import"></i>`,
 	command: IMPORT_CODE,
 } as Button & { label: string };

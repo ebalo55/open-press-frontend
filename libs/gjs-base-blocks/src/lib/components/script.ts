@@ -1,8 +1,7 @@
+import { TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
 import { Editor } from "grapesjs";
-import { TRAIT_SECTION_HEADER } from "@open-press/gjs-ui";
 import { OpenScriptEditorModalOptions } from "../commands";
 import { OPEN_SCRIPT_EDITOR_MODAL } from "../commands/names";
-
 
 export const ScriptComponent = (editor: Editor) => {
 	editor.Components.addType("script-custom", {
@@ -13,19 +12,20 @@ export const ScriptComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "script",
-				name:       "Script",
-				badgable:   false,
-				stylable:   false,
-				copyable:   false,
-				resizable:  false,
-				droppable:  false, // Can't drop other elements inside
-				attributes: { // Default attributes
+				tagName: "script",
+				name: "Script",
+				badgable: false,
+				stylable: false,
+				copyable: false,
+				resizable: false,
+				droppable: false, // Can't drop other elements inside
+				attributes: {
+					// Default attributes
 					type: "text/javascript",
 				},
-				traits:     [
+				traits: [
 					{
-						type:  TRAIT_SECTION_HEADER,
+						type: TRAIT_SECTION_HEADER,
 						label: "General settings",
 					},
 					{
@@ -34,93 +34,93 @@ export const ScriptComponent = (editor: Editor) => {
 					},
 					"src",
 					{
-						type:    "select",
-						name:    "referrerpolicy",
-						label:   "Referrer policy",
+						type: "select",
+						name: "referrerpolicy",
+						label: "Referrer policy",
 						options: [
 							{
-								id:   "",
+								id: "",
 								name: "None",
 							},
 							{
-								id:   "no-referrer",
+								id: "no-referrer",
 								name: "No referrer",
 							},
 							{
-								id:   "no-referrer-when-downgrade",
+								id: "no-referrer-when-downgrade",
 								name: "No referrer when downgrade",
 							},
 							{
-								id:   "origin",
+								id: "origin",
 								name: "Origin",
 							},
 							{
-								id:   "origin-when-cross-origin",
+								id: "origin-when-cross-origin",
 								name: "Origin when cross origin",
 							},
 							{
-								id:   "same-origin",
+								id: "same-origin",
 								name: "Same origin",
 							},
 							{
-								id:   "strict-origin",
+								id: "strict-origin",
 								name: "Strict origin",
 							},
 							{
-								id:   "strict-origin-when-cross-origin",
+								id: "strict-origin-when-cross-origin",
 								name: "Strict origin when cross origin",
 							},
 							{
-								id:   "unsafe-url",
+								id: "unsafe-url",
 								name: "Unsafe url",
 							},
 						],
 					},
 					{
-						type:       "checkbox",
-						name:       "nomodule",
-						label:      "No module",
-						valueTrue:  "true",
+						type: "checkbox",
+						name: "nomodule",
+						label: "No module",
+						valueTrue: "true",
 						valueFalse: "false",
 					},
 					{
-						type:  "text",
-						name:  "integrity",
+						type: "text",
+						name: "integrity",
 						label: "Integrity hash",
 					},
 					{
-						type:  "checkbox",
-						name:  "defer",
+						type: "checkbox",
+						name: "defer",
 						label: "Defer loading",
 					},
 					{
-						type:  "checkbox",
-						name:  "async",
+						type: "checkbox",
+						name: "async",
 						label: "Async loading",
 					},
 					{
-						type:    "select",
-						name:    "crossorigin",
-						label:   "Cross origin",
+						type: "select",
+						name: "crossorigin",
+						label: "Cross origin",
 						options: [
 							{
-								id:   "",
+								id: "",
 								name: "None",
 							},
 							{
-								id:   "anonymous",
+								id: "anonymous",
 								name: "Anonymous",
 							},
 							{
-								id:   "use-credentials",
+								id: "use-credentials",
 								name: "Use credentials",
 							},
 						],
 					},
 					{
-						type:    "button",
-						text:    "Edit script content",
-						full:    true,
+						type: "button",
+						text: "Edit script content",
+						full: true,
 						command: OPEN_SCRIPT_EDITOR_MODAL,
 					},
 				],

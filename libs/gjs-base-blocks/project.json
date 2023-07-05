@@ -30,6 +30,32 @@
 					"codeCoverage": true
 				}
 			}
+		},
+		"build": {
+			"executor": "@nx/rollup:rollup",
+			"outputs": [
+				"{options.outputPath}"
+			],
+			"options": {
+				"outputPath": "dist/libs/gjs-base-blocks",
+				"tsConfig": "libs/gjs-base-blocks/tsconfig.lib.json",
+				"project": "libs/gjs-base-blocks/package.json",
+				"entryFile": "libs/gjs-base-blocks/src/index.ts",
+				"external": [
+					"react",
+					"react-dom",
+					"react/jsx-runtime"
+				],
+				"rollupConfig": "@nx/react/plugins/bundle-rollup",
+				"compiler": "swc",
+				"assets": [
+					{
+						"glob": "libs/gjs-base-blocks/README.md",
+						"input": ".",
+						"output": "."
+					}
+				]
+			}
 		}
 	},
 	"tags": [

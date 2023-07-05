@@ -3,9 +3,9 @@ import { makeBlockLabel } from "./label-factory";
 
 export const HeaderBlock = (editor: Editor) => {
 	editor.Blocks.add("header", {
-		label:    makeBlockLabel("Header", "heading"),
+		label: makeBlockLabel("Header", "heading"),
 		category: "Basic",
-		content:  {
+		content: {
 			type: "header",
 		},
 	});

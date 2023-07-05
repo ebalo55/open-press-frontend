@@ -1,0 +1,129 @@
+.editor {
+    @apply relative text-base;
+    height: 100dvh;
+    width: 100dvw;
+
+#gjs {
+    border: 3px solid #444;
+}
+
+.panel__top {
+    @apply pr-2 w-full flex h-12 max-h-12 items-center justify-between;
+}
+
+.gjs-pn-btn {
+    @apply flex items-center justify-center mx-1;
+}
+
+/* Reset some default styling */
+
+.gjs-cv-canvas {
+    @apply top-0 w-full h-full;
+}
+
+.gjs-block {
+    @apply w-auto h-auto min-h-[auto];
+}
+
+.panel__basic-actions, .panel__switcher, .panel__devices {
+    position: initial;
+}
+
+.editor-row {
+    @apply flex justify-start flex-nowrap items-stretch;
+}
+
+.editor-canvas {
+    @apply flex-grow mt-12;
+}
+
+.panel__left {
+    @apply relative right-0 overflow-y-auto w-[300px] mt-12;
+}
+
+select {
+    @apply px-2;
+    background-image: none !important;
+
+option {
+    @apply truncate;
+}
+
+}
+
+.layers-container {
+
+.gjs-layer-name {
+    @apply leading-none;
+}
+
+.gjs-layer-count {
+    @apply hidden;
+}
+
+.gjs-layer-move, .gjs-layer-vis {
+    @apply top-1 p-2;
+}
+
+.gjs-layer-title {
+    @apply py-2 pr-6;
+}
+
+}
+
+.styles-container, .layers-container, .blocks-container, .traits-container {
+    @apply overflow-auto;
+    height: calc(100dvh - 4rem);
+    max-height: calc(100dvh - 4rem);
+
+&
+::-webkit-scrollbar {
+    @apply w-2 pl-2;
+}
+
+&
+::-webkit-scrollbar-track {
+    @apply rounded-full bg-gray-500;
+}
+
+&
+::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-gray-200;
+}
+
+&
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+}
+
+}
+
+.styles-container {
+    @apply flex flex-col transition-all duration-300 ease-in-out;
+
+.gjs-clm-tags {
+    @apply order-1;
+}
+
+.gjs-sm-sectors {
+    @apply order-2;
+}
+
+}
+
+.gjs-blocks-c {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+}
+
+.gjs-layer-caret {
+    top: -3px
+}
+
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(1turn);
+    }
+}

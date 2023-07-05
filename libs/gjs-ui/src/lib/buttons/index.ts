@@ -10,3 +10,6 @@ export * from "./undo";
 export * from "./redo";
 export * from "./preview";
 export * from "./import-code";
+export * from "./saving";
+export * from "./home";
+export * from "./menu";

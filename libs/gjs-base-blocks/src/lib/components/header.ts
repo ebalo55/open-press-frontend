@@ -1,18 +1,12 @@
+import { GrapesJsUtility } from "@aetheria/frontend-common";
+import { ComponentAttributeChangeHandlerOptions } from "@aetheria/frontend-interfaces";
+import classNames from "classnames";
 import { Component, Editor } from "grapesjs";
-import { explodeClasses, GrapesJsUtility } from "@open-press/utility";
-import { ComponentAttributeChangeHandlerOptions } from "@open-press/interfaces";
 
 export const HeaderComponent = (editor: Editor) => {
 	editor.Components.addType("header", {
 		// Make the editor understand when to bind `my-input-type`
-		isComponent: (el: HTMLElement) => [
-			"H1",
-			"H2",
-			"H3",
-			"H4",
-			"H5",
-			"H6",
-		].includes(el.tagName),
+		isComponent: (el: HTMLElement) => ["H1", "H2", "H3", "H4", "H5", "H6"].includes(el.tagName),
 
 		extend: "text",
 
@@ -20,25 +14,26 @@ export const HeaderComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "h1",
-				droppable:  true,
-				attributes: { // Default attributes
+				tagName: "h1",
+				droppable: true,
+				attributes: {
+					// Default attributes
 					order: 1,
 				},
-				traits:     [
+				traits: [
 					{
 						type: "number",
 						name: "order",
-						min:  1,
-						max:  6,
+						min: 1,
+						max: 6,
 						step: 1,
 					},
 					"id",
 				],
-				classes:    explodeClasses("font-semibold text-2xl p-2"),
+				classes: classNames("font-semibold text-2xl p-2"),
 				components: [
 					{
-						type:    "textnode",
+						type: "textnode",
 						content: "This is a header",
 					},
 				],
@@ -52,7 +47,7 @@ export const HeaderComponent = (editor: Editor) => {
 			handleOrderAttributeChange(
 				component: Component,
 				value: string,
-				options: ComponentAttributeChangeHandlerOptions,
+				options: ComponentAttributeChangeHandlerOptions
 			) {
 				const parsed_value = +value;
 

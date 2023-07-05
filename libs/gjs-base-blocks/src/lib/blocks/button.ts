@@ -3,9 +3,9 @@ import { makeBlockLabel } from "./label-factory";
 
 export const ButtonBlock = (editor: Editor) => {
 	editor.Blocks.add("button", {
-		label:    makeBlockLabel("Button", "square-plus"),
+		label: makeBlockLabel("Button", "square-plus"),
 		category: "Forms",
-		content:  {
+		content: {
 			type: "button",
 		},
 	});

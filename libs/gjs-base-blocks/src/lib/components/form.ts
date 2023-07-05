@@ -1,5 +1,5 @@
+import classNames from "classnames";
 import { Editor } from "grapesjs";
-import { explodeClasses } from "@open-press/utility";
 
 export const FormComponent = (editor: Editor) => {
 	editor.Components.addType("form", {
@@ -10,70 +10,70 @@ export const FormComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "form",
-				droppable:  true, // Can't drop other elements inside
-				attributes: { // Default attributes
-					target:       "none",
-					method:       "get",
+				tagName: "form",
+				droppable: true, // Can't drop other elements inside
+				attributes: {
+					// Default attributes
+					target: "none",
+					method: "get",
 					autocomplete: "on",
 				},
-				traits:     [
+				traits: [
 					"action",
 					{
-						type:    "select",
-						name:    "target",
+						type: "select",
+						name: "target",
 						options: [
 							{
-								id:   "none",
+								id: "none",
 								name: "None",
-
 							},
 							{
-								id:   "_self",
+								id: "_self",
 								name: "Self",
 							},
 							{
-								id:   "_blank",
+								id: "_blank",
 								name: "Blank",
 							},
 							{
-								id:   "_parent",
+								id: "_parent",
 								name: "Parent",
 							},
 							{
-								id:   "_top",
+								id: "_top",
 								name: "Top",
 							},
 						],
 					},
 					"rel",
 					{
-						type:    "select",
-						name:    "method",
+						type: "select",
+						name: "method",
 						options: [
 							{
-								id:   "get",
+								id: "get",
 								name: "GET",
 							},
 							{
-								id:   "post",
+								id: "post",
 								name: "POST",
 							},
 						],
 					},
 					{
-						type:       "checkbox",
-						name:       "autocomplete",
-						valueTrue:  "on",
+						type: "checkbox",
+						name: "autocomplete",
+						valueTrue: "on",
 						valueFalse: "off",
 					},
 					{
-						type:  "checkbox",
-						name:  "novalidate",
+						type: "checkbox",
+						name: "novalidate",
 						label: "Disable validation",
 					},
 				],
-				classes:    explodeClasses("p-2"),
+				classes: classNames("p-2"),
 			},
 		},
 	});

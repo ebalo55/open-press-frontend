@@ -1,5 +1,5 @@
+import classNames from "classnames";
 import { Editor } from "grapesjs";
-import { explodeClasses } from "@open-press/utility";
 
 export const ParagraphComponent = (editor: Editor) => {
 	editor.Components.addType("paragraph", {
@@ -12,11 +12,11 @@ export const ParagraphComponent = (editor: Editor) => {
 		model: {
 			// Default properties
 			defaults: {
-				tagName:    "p",
-				classes:    explodeClasses("text-base p-2"),
+				tagName: "p",
+				classes: classNames("text-base p-2"),
 				components: [
 					{
-						type:    "textnode",
+						type: "textnode",
 						content: "This is a paragraph",
 					},
 				],
