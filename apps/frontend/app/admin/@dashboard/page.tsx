@@ -1,6 +1,6 @@
 "use client";
+import { useInject, useSafeInject } from "@aetheria/frontend-common";
 import { INJECTION_TOKENS } from "@aetheria/frontend-interfaces";
-import { useInject, useSafeInject } from "@aetheria/hooks";
 import { useRouter } from "next/navigation";
 import { FC, Suspense, useEffect } from "react";
 

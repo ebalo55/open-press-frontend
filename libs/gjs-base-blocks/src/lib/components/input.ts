@@ -1,8 +1,8 @@
+import { GrapesJsUtility } from "@aetheria/frontend-common";
 import {
 	ComponentAttributeChangeHandlerOptions,
 	TraitHorizontalSeparatorExtraSettings,
 } from "@aetheria/frontend-interfaces";
-import { GrapesJsUtility } from "@aetheria/frontend-utility";
 import { TRAIT_HORIZONTAL_SEPARATOR, TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
 import { Component, Editor } from "grapesjs";
 

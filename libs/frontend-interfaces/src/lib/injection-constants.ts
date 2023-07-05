@@ -10,6 +10,9 @@ export const INJECTION_TOKENS = {
 		// keeps the value of the first loaded url, this is used to redirect the user to the originally requested page
 		// after login verification
 		initial_navigation_url: "instances.initial_navigation_url",
+
+		gjs_plugins: "instances.gjs_plugins",
+		gjs_plugin_opts: "instances.gjs_plugins.opts",
 	},
 	// React components
 	components: {

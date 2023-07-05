@@ -1,0 +1,61 @@
+{
+	"name": "@aetheria/gjs-base-blocks",
+	"version": "1.0.0",
+	"description": "Aetheria CMS - GrapesJS base building blocks and components",
+	"author": {
+		"name": "Override",
+		"email": "hello@override.sh",
+		"url": "https://override.sh"
+	},
+	"homepage": "https://aetheria-docs.override.sh/packages/gjs-base-blocks",
+	"bugs": {
+		"url": "https://github.com/override-sh/aetheria-frontend/issues"
+	},
+	"license": "GPL-2.0",
+	"publishConfig": {
+		"access": "public",
+		"tag": "latest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/override-sh/aetheria-frontend.git",
+		"directory": "libs/gjs-base-blocks"
+	},
+	"keywords": [
+		"override",
+		"aetheria",
+		"frontend",
+		"cms",
+		"grapesjs",
+		"ui",
+		"blocks",
+		"components",
+		"es6",
+		"nextjs",
+		"next",
+		"cms"
+	],
+	"aetheria": {
+		"assets": [],
+		"reference_commit": "702c83b2c587b73aa0b4bd01bfd9277e90a655cf"
+	},
+	"dependencies": {
+		"@aetheria/frontend-common": "^1.0.0",
+		"@aetheria/frontend-interfaces": "^1.0.0",
+		"@aetheria/gjs-ui": "^1.0.0",
+		"@codemirror/lang-css": "^6.2.0",
+		"@codemirror/lang-javascript": "^6.1.9",
+		"@codemirror/state": "^6.2.1",
+		"@codemirror/view": "^6.14.0",
+		"@uiw/codemirror-theme-darcula": "^4.21.5",
+		"awilix": "^8.0.1",
+		"classnames": "^2.3.2",
+		"codemirror": "^6.0.1",
+		"grapesjs": "^0.21.2",
+		"grapesjs-style-bg": "^2.0.1",
+		"grapesjs-style-gradient": "^3.0.1",
+		"grapesjs-tui-image-editor": "^1.0.1",
+		"grapesjs-typed": "^2.0.1",
+		"tslib": "^2.5.3"
+	}
+}

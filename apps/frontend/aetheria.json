@@ -1,16 +1,16 @@
 {
     "plugins": [
         {
-            "id": "@aetheria/frontend-utility",
-            "resolve": "../../libs/frontend-utility"
+	        "id": "@aetheria/frontend-common",
+	        "resolve": "../../libs/frontend-utility"
         },
-        {
-            "id": "@aetheria/hooks",
-            "resolve": "../../libs/hooks"
-        },
-        {
-            "id": "@aetheria/components",
-            "resolve": "../../libs/components"
-        }
+	    {
+		    "id": "@aetheria/frontend-common",
+		    "resolve": "../../libs/hooks"
+	    },
+	    {
+		    "id": "@aetheria/frontend-common",
+		    "resolve": "../../libs/components"
+	    }
     ]
 }

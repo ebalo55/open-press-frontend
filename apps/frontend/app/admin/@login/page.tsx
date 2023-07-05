@@ -1,4 +1,4 @@
-import { LoginBase } from "@aetheria/components";
+import { LoginBase } from "@aetheria/frontend-common";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

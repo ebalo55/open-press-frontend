@@ -1,4 +1,4 @@
-import { GrapesJsUtility } from "@aetheria/frontend-utility";
+import { GrapesJsUtility } from "@aetheria/frontend-common";
 import { TRAIT_SECTION_HEADER } from "@aetheria/gjs-ui";
 import classNames from "classnames";
 import { Editor } from "grapesjs";

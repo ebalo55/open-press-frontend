@@ -34,6 +34,11 @@
 	],
 	"aetheria": {
 		"assets": [],
-		"reference_commit": "98f434eedb74aeb5c37c6d26616bf31097763e4f"
+		"reference_commit": "702c83b2c587b73aa0b4bd01bfd9277e90a655cf"
+	},
+	"dependencies": {
+		"@mantine/core": "^6.0.13",
+		"react": "18.2.0",
+		"tslib": "^2.5.3"
 	}
 }

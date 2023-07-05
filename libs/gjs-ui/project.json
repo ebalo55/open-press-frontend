@@ -30,6 +30,32 @@
 					"codeCoverage": true
 				}
 			}
+		},
+		"build": {
+			"executor": "@nx/rollup:rollup",
+			"outputs": [
+				"{options.outputPath}"
+			],
+			"options": {
+				"outputPath": "dist/libs/gjs-ui",
+				"tsConfig": "libs/gjs-ui/tsconfig.lib.json",
+				"project": "libs/gjs-ui/package.json",
+				"entryFile": "libs/gjs-ui/src/index.ts",
+				"external": [
+					"react",
+					"react-dom",
+					"react/jsx-runtime"
+				],
+				"rollupConfig": "@nx/react/plugins/bundle-rollup",
+				"compiler": "swc",
+				"assets": [
+					{
+						"glob": "libs/gjs-ui/README.md",
+						"input": ".",
+						"output": "."
+					}
+				]
+			}
 		}
 	},
 	"tags": [

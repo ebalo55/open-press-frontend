@@ -18,35 +18,20 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@frontend/config": [
-				"libs/config/src/index.ts"
+			"@aetheria/frontend-common": [
+				"libs/common/src/index.ts"
 			],
-			"@frontend/config/server": [
-				"libs/config/src/server.ts"
-			],
-			"@aetheria/components": [
-				"libs/components/src/index.ts"
-			],
-			"@aetheria/components/server": [
-				"libs/components/src/server.ts"
+			"@aetheria/frontend-common/server": [
+				"libs/common/src/server.ts"
 			],
 			"@aetheria/frontend-interfaces": [
 				"libs/frontend-interfaces/src/index.ts"
-			],
-			"@aetheria/frontend-utility": [
-				"libs/frontend-utility/src/index.ts"
-			],
-			"@aetheria/frontend-utility/server": [
-				"libs/frontend-utility/src/server.ts"
 			],
 			"@aetheria/gjs-base-blocks": [
 				"libs/gjs-base-blocks/src/index.ts"
 			],
 			"@aetheria/gjs-ui": [
 				"libs/gjs-ui/src/index.ts"
-			],
-			"@aetheria/hooks": [
-				"libs/hooks/src/index.ts"
 			],
 			"@aetheria/plugin-example-frontend": [
 				"libs/plugin-example-frontend/src/index.ts"

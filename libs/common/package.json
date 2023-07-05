@@ -1,0 +1,65 @@
+{
+	"name": "@aetheria/frontend-common",
+	"version": "1.0.0",
+	"description": "Aetheria frontend common utilities, components and methods",
+	"author": {
+		"name": "Override",
+		"email": "hello@override.sh",
+		"url": "https://override.sh"
+	},
+	"homepage": "https://aetheria-docs.override.sh/packages/frontend-common",
+	"bugs": {
+		"url": "https://github.com/override-sh/aetheria-frontend/issues"
+	},
+	"license": "GPL-2.0",
+	"publishConfig": {
+		"access": "public",
+		"tag": "latest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/override-sh/aetheria-frontend.git",
+		"directory": "libs/common"
+	},
+	"keywords": [
+		"override",
+		"aetheria",
+		"frontend",
+		"components",
+		"utilities",
+		"methods",
+		"client",
+		"server",
+		"es6",
+		"nextjs",
+		"next",
+		"cms"
+	],
+	"aetheria": {
+		"assets": [],
+		"reference_commit": "702c83b2c587b73aa0b4bd01bfd9277e90a655cf"
+	},
+	"dependencies": {
+		"@aetheria/frontend-interfaces": "^1.0.0",
+		"@mantine/core": "^6.0.13",
+		"@mantine/form": "^6.0.13",
+		"@mantine/hooks": "^6.0.13",
+		"@mantine/modals": "^6.0.13",
+		"@mantine/notifications": "^6.0.13",
+		"@tabler/icons-react": "^2.22.0",
+		"awilix": "^8.0.1",
+		"axios": "^1.4.0",
+		"grapesjs": "^0.21.2",
+		"grapesjs-style-bg": "^2.0.1",
+		"grapesjs-style-gradient": "^3.0.1",
+		"grapesjs-tui-image-editor": "^1.0.1",
+		"grapesjs-typed": "^2.0.1",
+		"lodash": "^4.17.21",
+		"luxon": "^3.3.0",
+		"next": "13.4.6",
+		"react": "18.2.0",
+		"swr": "^2.1.5",
+		"tslib": "^2.5.3",
+		"zod": "^3.21.4"
+	}
+}

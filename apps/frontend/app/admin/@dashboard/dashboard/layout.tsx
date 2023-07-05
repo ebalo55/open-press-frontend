@@ -1,7 +1,7 @@
 "use client";
 
+import { useSafeInject } from "@aetheria/frontend-common";
 import { INJECTION_TOKENS, ReactChildren } from "@aetheria/frontend-interfaces";
-import { useSafeInject } from "@aetheria/hooks";
 import { AppShell } from "@mantine/core";
 import { FC } from "react";
 

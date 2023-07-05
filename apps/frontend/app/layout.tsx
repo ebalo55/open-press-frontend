@@ -1,5 +1,5 @@
+import { CONFIG } from "@aetheria/frontend-common";
 import { ReactChildren } from "@aetheria/frontend-interfaces";
-import { CONFIG } from "@frontend/config";
 
 import "@tabler/icons-webfont/tabler-icons.min.css";
 import { Metadata } from "next";

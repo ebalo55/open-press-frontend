@@ -1,5 +1,5 @@
+import { CONFIG } from "@aetheria/frontend-common";
 import { TemplateRenderingEntity } from "@aetheria/frontend-interfaces";
-import { CONFIG } from "@frontend/config";
 import { Metadata } from "next";
 import Script from "next/script";
 

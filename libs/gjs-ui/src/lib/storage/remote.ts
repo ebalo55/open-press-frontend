@@ -1,5 +1,5 @@
+import { CONFIG } from "@aetheria/frontend-common";
 import { TemplateEntity } from "@aetheria/frontend-interfaces";
-import { CONFIG } from "@frontend/config";
 import axios from "axios";
 import { IStorage, StorageOptions } from "grapesjs";
 

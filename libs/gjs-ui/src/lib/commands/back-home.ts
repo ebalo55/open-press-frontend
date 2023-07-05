@@ -2,6 +2,6 @@ import { CommandObject } from "grapesjs";
 
 export const BackHomeCommand: CommandObject = {
 	run: (editor) => {
-		window.history.back();
+		window.location.href = "/admin/dashboard";
 	},
 };

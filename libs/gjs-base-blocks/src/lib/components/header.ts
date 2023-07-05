@@ -1,5 +1,5 @@
+import { GrapesJsUtility } from "@aetheria/frontend-common";
 import { ComponentAttributeChangeHandlerOptions } from "@aetheria/frontend-interfaces";
-import { GrapesJsUtility } from "@aetheria/frontend-utility";
 import classNames from "classnames";
 import { Component, Editor } from "grapesjs";
 

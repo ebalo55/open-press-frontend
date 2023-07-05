@@ -1,4 +1,4 @@
-import { BlockEditor } from "@aetheria/components";
+import { BlockEditor } from "@aetheria/frontend-common";
 
 interface Params {
 	id: string;

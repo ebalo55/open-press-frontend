@@ -1,4 +1,4 @@
-import { CONFIG } from "@frontend/config";
+import { CONFIG } from "@aetheria/frontend-common";
 import axios from "axios";
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";

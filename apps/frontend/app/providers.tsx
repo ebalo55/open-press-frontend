@@ -1,8 +1,8 @@
 "use client";
 
-import { nunito } from "@aetheria/components/server";
+import { IocProvider } from "@aetheria/frontend-common";
+import { CONFIG, nunito } from "@aetheria/frontend-common/server";
 import { INJECTION_TOKENS, ReactChildren } from "@aetheria/frontend-interfaces";
-import { IocProvider } from "@aetheria/hooks";
 import { ColorScheme, ColorSchemeProvider, Global, MantineProvider, Paper } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
@@ -46,6 +46,8 @@ async function fillContainer() {
 	const container = createContainer({
 		injectionMode: "PROXY",
 	});
+
+	CONFIG.ioc = container;
 
 	const modules = await Promise.all(injectable);
 
