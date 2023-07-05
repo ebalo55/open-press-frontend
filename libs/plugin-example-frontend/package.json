@@ -34,7 +34,7 @@
 	],
 	"aetheria": {
 		"assets": [],
-		"reference_commit": "702c83b2c587b73aa0b4bd01bfd9277e90a655cf"
+		"reference_commit": "38aeb64352a505cafb03b6284bb1848a5053dfe8"
 	},
 	"dependencies": {
 		"@mantine/core": "^6.0.13",
