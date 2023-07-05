@@ -1,6 +1,6 @@
 {
 	"name": "@aetheria/frontend-common",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Aetheria frontend common utilities, components, hooks and methods",
 	"author": {
 		"name": "Override",
@@ -37,7 +37,7 @@
 	],
 	"aetheria": {
 		"assets": [],
-		"reference_commit": "38aeb64352a505cafb03b6284bb1848a5053dfe8"
+		"reference_commit": "fc8771df488430d752ea9719e522ae3c01642eb2"
 	},
 	"dependencies": {
 		"@aetheria/frontend-interfaces": "^1.0.0",
