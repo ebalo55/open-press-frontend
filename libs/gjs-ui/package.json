@@ -1,6 +1,6 @@
 {
 	"name": "@aetheria/gjs-ui",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Aetheria CMS - GrapesJS UI",
 	"author": {
 		"name": "Override",
@@ -35,7 +35,7 @@
 	],
 	"aetheria": {
 		"assets": [],
-		"reference_commit": "bfe17a3ccdc5734fa8fa5fb834eb2bf5fee4e4ac"
+		"reference_commit": "d6029f776962ee6eb26358d5e71d6b0239e4f2ad"
 	},
 	"dependencies": {
 		"@aetheria/frontend-common": "^1.0.0",
