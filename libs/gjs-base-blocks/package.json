@@ -37,7 +37,7 @@
 	],
 	"aetheria": {
 		"assets": [],
-		"reference_commit": "fc8771df488430d752ea9719e522ae3c01642eb2"
+		"reference_commit": "bfe17a3ccdc5734fa8fa5fb834eb2bf5fee4e4ac"
 	},
 	"dependencies": {
 		"@aetheria/frontend-common": "^1.0.0",
