@@ -17,7 +17,8 @@ export * from "./lib/components";
 export function GjsBaseBlocksPluginLoader() {
 	setTimeout(() => {
 		if (!CONFIG.ioc) {
-			throw new Error("IOC container not found");
+			console.warn("IOC container not found");
+			return;
 		}
 
 		console.log("Registering GJS Base Blocks plugin");

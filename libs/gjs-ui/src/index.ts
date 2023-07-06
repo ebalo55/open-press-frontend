@@ -16,7 +16,8 @@ export * from "./lib/traits";
 export function GjsUIPluginLoader() {
 	setTimeout(() => {
 		if (!CONFIG.ioc) {
-			throw new Error("IOC container not found");
+			console.warn("IOC container not found");
+			return;
 		}
 
 		console.log("Registering GJS UI plugin");
