@@ -8,13 +8,22 @@ export const metadata: Metadata = {
 };
 
 async function getData(): Promise<TemplateRenderingEntity> {
-	const response = await fetch(`${CONFIG.backend_url}/template/render/home`);
+	try {
+		const response = await fetch(`${CONFIG.backend_url}/template/render/home`);
 
-	if (!response.ok) {
-		throw new Error(response.statusText);
+		if (!response.ok) {
+			console.warn(response.statusText);
+		}
+
+		return await response.json();
+	} catch (e) {
+		console.warn(e);
+		return {
+			html: "<h1>Something went wrong</h1>",
+			css: "",
+			scripts: "",
+		};
 	}
-
-	return await response.json();
 }
 
 export default async function Page() {

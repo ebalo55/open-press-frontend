@@ -1,0 +1,43 @@
+services:
+  frontend-base:
+    build:
+      context: docker/base
+      tags:
+        - frontend:latest-base
+        - frontend:1.0.0-base
+      args:
+        - NEXT_PUBLIC_APP_NAME=Aetheria
+        - NEXT_PUBLIC_BACKEND_URL=http://backend-base:3000
+    environment:
+      NEXT_PUBLIC_APP_NAME: Aetheria
+      NEXT_PUBLIC_BACKEND_URL: http://backend-base:3000
+    depends_on:
+      - backend-base
+    ports:
+      - "3000:3000"
+
+  backend-base:
+    image: overridesoft/aetheria-headless:latest-base
+    restart: unless-stopped
+    environment:
+      DB_HOST: mongo
+      DB_PORT: 27017
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_DATABASE: aetheria
+
+      JWT_ENCRYPTION: "symmetric"
+      JWT_SECRET: "example-secret-key"
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root

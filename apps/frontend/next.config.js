@@ -17,6 +17,7 @@ const nextConfig = {
 	compress: true,
 	optimizeFonts: true,
 	swcMinify: true,
+	output: "standalone",
 };
 
 const plugins = [

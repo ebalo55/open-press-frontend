@@ -19,7 +19,7 @@ async function getData(path: string): Promise<TemplateRenderingEntity> {
 	});
 
 	if (!response.ok) {
-		throw new Error(response.statusText);
+		console.warn(response.statusText);
 	}
 
 	return await response.json();
