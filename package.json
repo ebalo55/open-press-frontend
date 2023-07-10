@@ -77,7 +77,7 @@
 		"cypress": "^12.15.0",
 		"dotenv": "^16.3.0",
 		"eslint": "^8.44.0",
-		"eslint-config-next": "^13.4.7",
+		"eslint-config-next": "^13.4.9",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-cypress": "^2.10.3",
 		"eslint-plugin-import": "^2.27.5",
