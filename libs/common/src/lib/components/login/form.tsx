@@ -48,7 +48,7 @@ export const Form: FC = () => {
 		openLoadingOverlay();
 
 		try {
-			const response = await fetch(`${CONFIG.backend_url}/auth/login`, {
+			const response = await fetch(`${CONFIG.public_backend_url}/auth/login`, {
 				method: "post",
 				body: JSON.stringify(values),
 				headers: {

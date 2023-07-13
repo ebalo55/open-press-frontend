@@ -39,7 +39,7 @@ export const NewTemplateModal: FC<NewTemplateModalProps> = ({ opened, open, clos
 
 		try {
 			await axios.post(
-				`${CONFIG.backend_url}/template`,
+				`${CONFIG.public_backend_url}/template`,
 				{
 					...values,
 					html: "<body></body>",

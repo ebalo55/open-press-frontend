@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 async function getData(): Promise<TemplateRenderingEntity> {
 	try {
-		const response = await fetch(`${CONFIG.backend_url}/template/render/home`);
+		const response = await fetch(`${CONFIG.public_backend_url}/template/render/home`);
 
 		if (!response.ok) {
 			console.warn(response.statusText);

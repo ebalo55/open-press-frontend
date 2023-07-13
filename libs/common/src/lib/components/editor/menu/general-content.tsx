@@ -45,7 +45,7 @@ export const GeneralContent: FC<BlockEditorProps> = ({ id }) => {
 	const on_submit = async (values: { name: string }) => {
 		open();
 
-		await axios.put(`${CONFIG.backend_url}/template/${id}`, values, {
+		await axios.put(`${CONFIG.public_backend_url}/template/${id}`, values, {
 			headers: {
 				Authorization: `Bearer ${bearer}`,
 			},

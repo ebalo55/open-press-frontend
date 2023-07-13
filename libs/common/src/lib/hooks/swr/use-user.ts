@@ -13,7 +13,7 @@ export const useUser = () => {
 	const bearer = useSafeInject(INJECTION_TOKENS.instances.authentication_token) || "";
 
 	const { mutate, data, error, isLoading, isValidating } = useSWR(
-		`${CONFIG.backend_url}/auth/profile`,
+		`${CONFIG.public_backend_url}/auth/profile`,
 		(key: string) => axios.get<UserEntity>(key, { headers: { Authorization: `Bearer ${bearer}` } })
 	);
 

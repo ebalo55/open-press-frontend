@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 	}
 
 	// verifies the token with the backend
-	const response = await axios.get(`${CONFIG.backend_url}/auth/revalidate`, {
+	const response = await axios.get(`${CONFIG.ssr_backend_url}/auth/revalidate`, {
 		headers: {
 			Authorization: `Bearer ${authorization}`,
 		},

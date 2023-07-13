@@ -12,7 +12,7 @@ interface Props {
 }
 
 async function getData(path: string): Promise<TemplateRenderingEntity> {
-	const response = await fetch(`${CONFIG.backend_url}/template/render/${path}`, {
+	const response = await fetch(`${CONFIG.ssr_backend_url}/template/render/${path}`, {
 		next: {
 			tags: ["template", path],
 		},

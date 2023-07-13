@@ -17,7 +17,7 @@ import { useInject, useSafeInject } from "../use-inject";
  * @returns {Promise<axios.AxiosResponse<T>>} - The axios response
  */
 const deleteTemplateRequest = async (id: string, bearer: string) => {
-	const response = await axios.delete<TemplateEntity>(`${CONFIG.backend_url}/template/${id}`, {
+	const response = await axios.delete<TemplateEntity>(`${CONFIG.public_backend_url}/template/${id}`, {
 		headers: { Authorization: `Bearer ${bearer}` },
 	});
 
@@ -40,13 +40,13 @@ export const useTemplates = (template_id?: string) => {
 	);
 
 	// Fetch the templates from the backend
-	const listing = useSWR(`${CONFIG.backend_url}/template`, (key: string) =>
+	const listing = useSWR(`${CONFIG.public_backend_url}/template`, (key: string) =>
 		axios.get<TemplateEntity[]>(key, { headers: { Authorization: `Bearer ${bearer}` } })
 	);
 	const listing_mutation = listing.mutate;
 
 	const get = useSWR(template_id, (key: string) =>
-		axios.get<TemplateEntity>(`${CONFIG.backend_url}/template/${key}`, {
+		axios.get<TemplateEntity>(`${CONFIG.public_backend_url}/template/${key}`, {
 			headers: { Authorization: `Bearer ${bearer}` },
 		})
 	);
