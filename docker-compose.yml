@@ -1,16 +1,6 @@
 services:
   frontend-base:
-    build:
-      context: docker/base
-      tags:
-        - frontend:latest-base
-        - frontend:1.0.0-base
-      args:
-        - NEXT_PUBLIC_APP_NAME=Aetheria
-        - NEXT_PUBLIC_BACKEND_URL=http://backend-base:3000
-    environment:
-      NEXT_PUBLIC_APP_NAME: Aetheria
-      NEXT_PUBLIC_BACKEND_URL: http://backend-base:3000
+    image: overridesoft/aetheria-frontend:latest-base
     depends_on:
       - backend-base
     ports:
@@ -19,6 +9,7 @@ services:
   backend-base:
     image: overridesoft/aetheria-headless:latest-base
     restart: unless-stopped
+    pull_policy: always
     environment:
       DB_HOST: mongo
       DB_PORT: 27017
