@@ -44,7 +44,7 @@
       "react-dom": "18.2.0",
       "react-router-dom": "6.11.2",
       "swr": "^2.1.5",
-      "tslib": "^2.5.3",
+      "tslib": "^2.6.0",
       "zod": "^3.21.4"
     },
 	"devDependencies": {
