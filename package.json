@@ -48,7 +48,7 @@
       "zod": "^3.21.4"
     },
 	"devDependencies": {
-		"@nx/cypress": "^16.3.2",
+		"@nx/cypress": "^16.9.1",
 		"@nx/eslint-plugin": "^16.3.2",
 		"@nx/jest": "^16.3.2",
 		"@nx/js": "^16.3.2",
